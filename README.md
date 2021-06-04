@@ -1,6 +1,11 @@
-# Tudu
+# Octopus TODO
 
-A Simple to-do list manager
+TODO list Manager
+
+# Build
+
+* Electron  
+* React  
 
 ### Author 
 
