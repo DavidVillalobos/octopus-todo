@@ -1,11 +1,13 @@
 # Octopus TODO
 
-TODO list Manager
-
+TODO list Manager, this desktop application will allow you to create task lists,  
+each task can be scheduled and displayed on a dashboard,    
+it can also be viewed from a calendar.   
 # Build
 
 * Electron  
-* React  
+* Reactjs
+* Fundation - sites
 
 ### Author 
 
