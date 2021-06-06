@@ -15,7 +15,6 @@ class Main extends Component {
       <HashRouter>
         <div>
           <ul className="header">
-            
             <li><NavLink exact to="/">Home</NavLink></li>
             <li><NavLink to="/tasks">Tasks</NavLink></li>
             <li><NavLink to="/board">Board</NavLink></li>
