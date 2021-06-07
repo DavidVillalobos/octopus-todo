@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { ViewListIcon, ClipboardListIcon, ViewBoardsIcon, CalendarIcon } from '@heroicons/react/outline'
 import {
   Route,
   NavLink,
@@ -6,7 +7,7 @@ import {
 } from "react-router-dom";
 import Home from "./Home";
 import Tasks from "./Tasks";
-import Board from "./Board";
+import Dashboard from "./Dashboard";
 import Calendar from "./Calendar"; 
 
 class Main extends Component {
@@ -15,15 +16,35 @@ class Main extends Component {
       <HashRouter>
         <div>
           <ul className="header">
-            <li><NavLink exact to="/">Home</NavLink></li>
-            <li><NavLink to="/tasks">Tasks</NavLink></li>
-            <li><NavLink to="/board">Board</NavLink></li>
-            <li><NavLink to="/calendar">Calendar</NavLink></li>
+            <li>
+              <NavLink exact to="/">
+                <ViewListIcon class="icon-navbar"/>
+                <div>Home</div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/tasks">
+              <ClipboardListIcon class="icon-navbar"/>
+              <div>Tasks</div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/dashboard">
+              <ViewBoardsIcon class="icon-navbar"/>
+              <div>Dashboard</div>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact to="/calendar">
+              <CalendarIcon class="icon-navbar"/>
+              <div>Calendar</div>
+              </NavLink>
+            </li>
           </ul>
           <div className="content">
             <Route exact path="/" component={Home}/>
             <Route path="/tasks" component={Tasks}/>
-            <Route path="/board" component={Board}/>
+            <Route path="/dashboard" component={Dashboard}/>
             <Route path="/calendar" component={Calendar}/>
           </div>
         </div>

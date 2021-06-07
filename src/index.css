@@ -1,29 +1,28 @@
 body {
   background-color: #1373aa !important;
-  margin: 0;
 }
 .header{
   margin: 0;
 }
-h1, h2, p, ul, li {
-  font-family: sans-serif;
-  margin: 0;
-}
 ul.header li {
   display: inline;
-  list-style-type: none;
-  margin: 0;
 }
+
 ul.header {
   background-color: rgb(43, 41, 41);
   padding: 0;
 }
 ul.header li a {
   color: #FFF;
-  font-weight: bold;
-  text-decoration: none;
-  padding: 14px;
+  width: 25%;
   display: inline-block;
+  text-align: center;
+  padding: 5px;
+} 
+
+ul.header li a .icon-navbar{
+  height: 25px;
+  margin-bottom: -10px;
 }
 
 ul.header li a:hover {
@@ -32,10 +31,6 @@ ul.header li a:hover {
 .content {
   background-color: #FFF;
   padding: 10px;
-}
-.content h2 {
-  padding: 0;
-  margin: 0;
 }
 
 .active {
