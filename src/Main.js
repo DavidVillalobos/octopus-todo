@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { ViewListIcon, ClipboardListIcon, ViewBoardsIcon, CalendarIcon } from '@heroicons/react/outline'
+import { Icon } from 'react-foundation';
 import {
   Route,
   NavLink,
@@ -15,29 +15,29 @@ class Main extends Component {
     return (
       <HashRouter>
         <div>
-          <ul className="header">
+	        <ul className="header">
             <li>
               <NavLink exact to="/">
-                <ViewListIcon class="icon-navbar"/>
-                <div>Home</div>
+              <Icon name='fi-home'/> 
+              <span> Home </span>
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/tasks">
-              <ClipboardListIcon class="icon-navbar"/>
-              <div>Tasks</div>
+              <NavLink to="/tasks">
+              <Icon name='fi-list-bullet'/> 
+              <span> Tasks </span>
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/dashboard">
-              <ViewBoardsIcon class="icon-navbar"/>
-              <div>Dashboard</div>
+              <NavLink to="/dashboard"> 
+              <Icon name='fi-database'/> 
+              <span> Dashboard </span>
               </NavLink>
             </li>
             <li>
-              <NavLink exact to="/calendar">
-              <CalendarIcon class="icon-navbar"/>
-              <div>Calendar</div>
+              <NavLink to="/calendar">
+              <Icon name='fi-calendar'/> 
+              <span> Calendar </span> 
               </NavLink>
             </li>
           </ul>

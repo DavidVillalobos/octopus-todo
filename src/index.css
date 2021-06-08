@@ -17,13 +17,8 @@ ul.header li a {
   width: 25%;
   display: inline-block;
   text-align: center;
-  padding: 5px;
+  padding: 10px;
 } 
-
-ul.header li a .icon-navbar{
-  height: 25px;
-  margin-bottom: -10px;
-}
 
 ul.header li a:hover {
   background-color: rgb(56, 55, 55);
