@@ -11,7 +11,7 @@ class Calendar extends Component {
           <Thumbnail src="https://source.unsplash.com/150x150/?calendar" />
         </MediaObjectSection>
         <MediaObjectSection>
-          <h4>Schedule Here</h4>
+          <p>From here you can see when the tasks should be completed</p>
         </MediaObjectSection>
       </MediaObject> 
     </div>

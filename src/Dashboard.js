@@ -4,8 +4,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h2>Board</h2>
-        <p>This section is for move your task in columns</p>
+        <h2>Dashboard</h2>
+        <p>It is to visually see the current status</p>
+        <p> of the tasks and modify it</p>
+        <p>Each task have state: TODO, PROGRESS, DONE</p>
       </div>
     );
   }

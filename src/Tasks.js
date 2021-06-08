@@ -6,6 +6,7 @@ class Tasks extends Component {
       <div>
         <h2>Tasks</h2>
         <p>This is section where you see your task to do</p>
+        <p>Here you can add your task, schedule, and check</p>
       </div>
     );
   }

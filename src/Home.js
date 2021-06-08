@@ -4,8 +4,10 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <h2>Welcome</h2>
-        <p>This is app for manage your task to do</p>
+        <h2>Home</h2>
+        <p>This app is for manage your task todo</p>
+        <p>This section show your principal task schedule
+        </p>
       </div>
     );
   }
