@@ -1,9 +1,11 @@
 body {
   background-color: #1373aa !important;
 }
+
 .header{
   margin: 0;
 }
+
 ul.header li {
   display: inline;
 }
@@ -12,6 +14,7 @@ ul.header {
   background-color: rgb(43, 41, 41);
   padding: 0;
 }
+
 ul.header li a {
   color: #FFF;
   width: 25%;
@@ -23,6 +26,12 @@ ul.header li a {
 ul.header li a:hover {
   background-color: rgb(56, 55, 55);
 }
+
+.navbar-icon{
+  height: 20px;
+  margin-bottom: -3px;
+}
+
 .content {
   background-color: #FFF;
   padding: 10px;

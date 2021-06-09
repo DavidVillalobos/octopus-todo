@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Icon } from 'react-foundation';
 import {
   Route,
   NavLink,
@@ -9,6 +8,7 @@ import Home from "./Home";
 import Tasks from "./Tasks";
 import Dashboard from "./Dashboard";
 import Calendar from "./Calendar"; 
+import { HomeIcon, CollectionIcon, ViewBoardsIcon, CalendarIcon } from '@heroicons/react/solid'
 
 class Main extends Component {
   render() {
@@ -18,25 +18,25 @@ class Main extends Component {
 	        <ul className="header">
             <li>
               <NavLink exact to="/">
-              <Icon name='fi-home'/> 
+              <HomeIcon class="navbar-icon"/>
               <span> Home </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/tasks">
-              <Icon name='fi-list-bullet'/> 
+              <CollectionIcon class="navbar-icon"/>
               <span> Tasks </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/dashboard"> 
-              <Icon name='fi-database'/> 
+              <ViewBoardsIcon class="navbar-icon"/>
               <span> Dashboard </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/calendar">
-              <Icon name='fi-calendar'/> 
+              <CalendarIcon class="navbar-icon"/>
               <span> Calendar </span> 
               </NavLink>
             </li>
