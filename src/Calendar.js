@@ -1,19 +1,17 @@
 import React, { Component } from "react";
-import { MediaObject, MediaObjectSection, Thumbnail } from "react-foundation";
+import {Grid,Cell} from 'react-foundation';
+import Week from './Week'
 
 class Calendar extends Component {
   render() {
     return (
       <div>
-      <h2>Calendar</h2>
-      <MediaObject>
-        <MediaObjectSection>
-          <Thumbnail src="https://source.unsplash.com/150x150/?calendar" />
-        </MediaObjectSection>
-        <MediaObjectSection>
-          <p>From here you can see when the tasks should be completed</p>
-        </MediaObjectSection>
-      </MediaObject> 
+      <h3>Calendar</h3>
+     <Week/>
+     <Week/>
+     <Week/>
+     <Week/>
+     <Week/>     
     </div>
      
     );
