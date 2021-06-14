@@ -5,7 +5,7 @@ import {
   HashRouter
 } from "react-router-dom";
 import Home from "./Home";
-import Tasks from "./Tasks";
+import ListTasks from "./ListTasks";
 import Dashboard from "./Dashboard";
 import Calendar from "./Calendar"; 
 import { HomeIcon, CollectionIcon, ViewBoardsIcon, CalendarIcon } from '@heroicons/react/solid'
@@ -23,7 +23,7 @@ class Main extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/tasks">
+              <NavLink to="/listtasks">
               <CollectionIcon class="navbar-icon"/>
               <span> Tasks </span>
               </NavLink>
@@ -43,7 +43,7 @@ class Main extends Component {
           </ul>
           <div className="content">
             <Route exact path="/" component={Home}/>
-            <Route path="/tasks" component={Tasks}/>
+            <Route path="/listtasks" component={ListTasks}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/calendar" component={Calendar}/>
           </div>
