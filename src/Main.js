@@ -23,7 +23,7 @@ class Main extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/listtasks">
+              <NavLink to="/tasks">
               <CollectionIcon class="navbar-icon"/>
               <span> Tasks </span>
               </NavLink>
@@ -43,7 +43,7 @@ class Main extends Component {
           </ul>
           <div className="content">
             <Route exact path="/" component={Home}/>
-            <Route path="/listtasks" component={ListTasks}/>
+            <Route path="/tasks" component={ListTasks}/>
             <Route path="/dashboard" component={Dashboard}/>
             <Route path="/calendar" component={Calendar}/>
           </div>

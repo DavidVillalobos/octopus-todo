@@ -10,7 +10,7 @@ ul.header li {
   display: inline;
 }
 
-ul.header {
+ul.header, header{
   background-color: rgb(43, 41, 41);
   padding: 0;
 }
@@ -23,7 +23,7 @@ ul.header li a {
   padding: 10px;
 } 
 
-ul.header li a:hover {
+ul.header li a:hover{
   background-color: rgb(56, 55, 55);
 }
 
@@ -38,5 +38,14 @@ ul.header li a:hover {
 }
 
 .active {
+  background-color: rgb(75, 74, 74);
+}
+
+.dashboard-column-header{
+  background-color: rgb(50, 49, 49) !important;
+  color: #FFF;
+}
+
+.dashboard-column:hover{
   background-color: rgb(75, 74, 74);
 }
