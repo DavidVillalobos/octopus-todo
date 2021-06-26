@@ -12,13 +12,13 @@ class Dashboard extends Component {
         <p>Each task have state: TODO, PROGRESS, DONE</p>
         <Grid>
         <Cell small={4} large={4}>
-          <ColumnDashBoard columnName="TODO"/>
+          <ColumnDashBoard columnName="Todo"/>
         </Cell>
           <Cell small={4} large={4}>
-          <ColumnDashBoard columnName="PROGRESS"/>
+          <ColumnDashBoard columnName="Progress"/>
           </Cell>
           <Cell small={4} large={4}>
-            <ColumnDashBoard columnName="DONE"/>
+            <ColumnDashBoard columnName="Done"/>
           </Cell>
         </Grid>
       </div>
