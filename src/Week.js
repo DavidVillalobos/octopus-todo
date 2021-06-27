@@ -5,11 +5,8 @@ import Day from './Day';
 class Week extends Component {
   render() {
     return (
-      <div>
+      <div className="week">
       	  <Grid>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
             <Cell small={1} large={1}>
                 <Day/>
             </Cell>

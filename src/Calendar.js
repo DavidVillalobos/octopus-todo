@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import {Grid,Cell} from 'react-foundation';
 import Week from './Week'
+import HeaderMonth from './HeaderMonth'
 
 class Calendar extends Component {
   render() {
     return (
-      <div>
-      <h3>Calendar</h3>
-     <Week/>
-     <Week/>
-     <Week/>
-     <Week/>
-     <Week/>     
-    </div>
-     
+      <div className="calendar">
+        <h3>Calendar</h3>
+        <div className="month">
+          <HeaderMonth/>
+          <Week/>
+          <Week/>
+          <Week/>
+          <Week/>
+          <Week/>     
+        </div>
+      </div>
     );
   }
 }
