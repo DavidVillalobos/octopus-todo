@@ -5,9 +5,8 @@ class Day extends Component {
     return (
       <div class="card">
         <div class="card-section day">
-          #
         </div>
-      </div>   
+      </div>            
     );
   }
 }
