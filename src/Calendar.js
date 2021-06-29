@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Grid,Cell} from 'react-foundation';
 import HeaderMonth from './HeaderMonth'
+import ColumnDashBoard from './ColumnDashBoard'
 import Week from './Week'
 
 class Calendar extends Component {
@@ -9,12 +10,12 @@ class Calendar extends Component {
       <div className="calendar">
         <h3>Calendar</h3>
         <Grid>
-            <Cell small={1} large={3}>
+            <Cell large={3}>
               <div className="">
-                Aja
+                <ColumnDashBoard columnName="Pending tasks"/>
               </div>
             </Cell>
-            <Cell small={1} large={9}>
+            <Cell large={9}>
               <div className="month">
                 <HeaderMonth/>
                 <Week/>
