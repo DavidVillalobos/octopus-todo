@@ -8,49 +8,49 @@ class HeaderMonth extends Component {
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                Lunes
-            </div>
-            </div>  
-            </Cell>
-            <Cell small={1} large={1}>
-            <div class="header-month-card card">
-                <div class="card-section">
-                    Martes
+                    Monday
                 </div>
             </div>  
             </Cell>
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                    Miercoles
+                    Tuesday
                 </div>
             </div>  
             </Cell>
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                    Jueves
+                    Wednesday
                 </div>
             </div>  
             </Cell>
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                    Viernes
+                    Thursday
                 </div>
             </div>  
             </Cell>
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                    Sabado
+                    Friday
                 </div>
             </div>  
             </Cell>
             <Cell small={1} large={1}>
             <div class="header-month-card card">
                 <div class="card-section">
-                    Domingo
+                    Saturday
+                </div>
+            </div>  
+            </Cell>
+            <Cell small={1} large={1}>
+            <div class="header-month-card card">
+                <div class="card-section">
+                    Sunday
                 </div>
             </div>  
             </Cell>
