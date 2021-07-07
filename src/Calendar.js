@@ -7,14 +7,9 @@ import Week from './Week'
 class Calendar extends Component {
   render() {
     return (
-      <div className="calendar">
+      <div className="nav-page">
         <h3>Calendar</h3>
         <Grid>
-            <Cell large={3}>
-              <div className="">
-                <ColumnDashBoard columnName="Pending tasks"/>
-              </div>
-            </Cell>
             <Cell large={9}>
               <div className="month">
                 <HeaderMonth/>
@@ -24,6 +19,9 @@ class Calendar extends Component {
                 <Week/>
                 <Week/>     
               </div>
+            </Cell>
+            <Cell large={3}>
+                <ColumnDashBoard columnName="Pending tasks"/>
             </Cell>
         </Grid>
       </div>
