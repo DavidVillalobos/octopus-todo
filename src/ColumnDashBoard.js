@@ -14,6 +14,13 @@ class ColumnDashBoard extends Component {
                 <SimpleTask name="example" duedate="dd-mm-yyyy"/>
                 <SimpleTask name="example" duedate="dd-mm-yyyy"/>
                 <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
            </div>
         </div>   
     );

@@ -8,9 +8,8 @@ class Calendar extends Component {
   render() {
     return (
       <div className="nav-page">
-        <h3>Calendar</h3>
         <Grid>
-            <Cell large={9}>
+            <Cell small={9} large={9}>
               <div className="month">
                 <HeaderMonth/>
                 <Week/>
@@ -20,7 +19,7 @@ class Calendar extends Component {
                 <Week/>     
               </div>
             </Cell>
-            <Cell large={3}>
+            <Cell small={3} large={3}>
                 <ColumnDashBoard columnName="Pending tasks"/>
             </Cell>
         </Grid>

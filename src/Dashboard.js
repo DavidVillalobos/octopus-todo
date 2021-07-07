@@ -6,9 +6,8 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="nav-page">
-        <h2>Dashboard</h2>
-        <p>It is to visually see the current status of the tasks and modify it Each task have state: TODO, PROGRESS, DONE</p>
-        <Grid>
+ 
+       <Grid>
         <Cell small={4} large={4}>
           <ColumnDashBoard columnName="Todo"/>
         </Cell>
