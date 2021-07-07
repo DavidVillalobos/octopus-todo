@@ -4,7 +4,7 @@ import SimpleTask from "./SimpleTask";
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="nav-page">
         <h2>Home</h2>
         <p>This app is for manage your task todo</p>
         <p>This section show your principal task schedule</p>

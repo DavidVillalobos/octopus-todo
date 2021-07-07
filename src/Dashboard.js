@@ -5,11 +5,9 @@ import ColumnDashBoard from './ColumnDashBoard'
 class Dashboard extends Component {
   render() {
     return (
-      <div>
+      <div className="nav-page">
         <h2>Dashboard</h2>
-        <p>It is to visually see the current status</p>
-        <p> of the tasks and modify it</p>
-        <p>Each task have state: TODO, PROGRESS, DONE</p>
+        <p>It is to visually see the current status of the tasks and modify it Each task have state: TODO, PROGRESS, DONE</p>
         <Grid>
         <Cell small={4} large={4}>
           <ColumnDashBoard columnName="Todo"/>
