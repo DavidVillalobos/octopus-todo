@@ -39,7 +39,6 @@ ul.header li a:hover{
 
 .content {
   background-color: #FFF;
- 
 }
 
 .active {
@@ -47,26 +46,19 @@ ul.header li a:hover{
 }
 
 .dashboard-column-header{
-  background-color: rgb(50, 49, 49) !important;
+  background-color: rgb(56, 55, 55) !important;
   color: #FFF;
-  height: 50px;
+  height: 60px;
+  font-size: 20px;
+
 }
 
 .dashboard-column {
-  border: 1px solid gray !important;
-  margin-left: 3px;
-  margin-top: -0px;
-}
-
-.nav-page{
-  background-color:#ffffff !important;
-  
+  border: 0px !important;
 }
 
 .day{
-  height: 103px;
-  /*border: 1px solid grey !important;*/
-  background-color: white;
+  height: 95px;
 }
 
 .week{
@@ -82,18 +74,32 @@ ul.header li a:hover{
   margin-bottom: -23px;
 }
 
+.radios-border{
+  border-radius: 10px !important;
+}
+
+.name-month{
+  height: 80px !important;
+  margin-bottom: -25px !important;
+  font-size: 30px;
+  text-align: center;
+  padding-right: 40%;
+  padding-top: -55%;
+}
+
 .header-month-card{
   background-color: rgb(50, 49, 49) !important;
   color: white !important;
-  border: 1px solid gray !important;
   height: 70%;
+  border: 0px !important;
 }
 
 .content-section{
-  height: 528px !important;
-  min-height: 528px !important;
-  max-height: 528px !important;
+  height: 535px !important;
+  min-height: 535px !important;
+  max-height: 535px !important;
   overflow-y: scroll;
+  background-color: rgb(75, 74, 74);
 }
 
 ::-webkit-scrollbar {
@@ -101,7 +107,7 @@ ul.header li a:hover{
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background-color: rgb(50, 49, 49);
 }
  
 ::-webkit-scrollbar-thumb {
