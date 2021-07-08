@@ -7,27 +7,11 @@ class Week extends Component {
     return (
       <div className="week">
       	  <Grid>
+            {this.props.days.map(day => (
             <Cell small={1} large={1}>
-                <Day/>
+                <Day data={day}/>
             </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
-            <Cell small={1} large={1}>
-                <Day/>
-            </Cell>
+            ))}
           </Grid>
         </div>
      
