@@ -38,6 +38,16 @@ ul.header li a:hover{
   margin-bottom: -3px;
 }
 
+.month-arrow-icon{
+  height: 40px;
+  margin-top: -10px;
+}
+
+.month-arrow-icon:hover{
+  margin-top: -15px;
+  height: 55px;
+}
+
 .content {
   background-color: #FFF;
 }
@@ -59,13 +69,13 @@ ul.header li a:hover{
 }
 
 .day{
-  height: 98px;
+  height: 82px;
   border-bottom: 1px solid gray !important;
   border-right: 1px solid gray !important;
 }
 
 .gray{
-  background-color: rgb(80, 80, 80);
+  background-color: rgb(84, 84, 84);
 }
 
 .white{
