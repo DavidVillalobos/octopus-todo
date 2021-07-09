@@ -3,6 +3,7 @@ import {Grid,Cell} from 'react-foundation';
 import HeaderMonth from './HeaderMonth';
 import ColumnDashBoard from './ColumnDashBoard';
 import Week from './Week';
+import {v4 as uuidv4 } from 'uuid'
 const { JsonCalendar } = require('json-calendar');
 
 class Calendar extends Component {
@@ -10,7 +11,6 @@ class Calendar extends Component {
   getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'en' })
   getWeeks = () => this.getCalendar().weeks.slice(0, 5);
   getDayNames = () => this.getCalendar().dayNames;
-
   render() {
     return ( 
       <div className="nav-page">
@@ -19,7 +19,9 @@ class Calendar extends Component {
               <div className="month">
                 <HeaderMonth MonthName={this.getCalendar().monthNames[this.actual.getMonth()]} DayNames={this.getDayNames()}/>
                 {this.getWeeks().map(week => (
-                  <Week days={week} month={this.actual.getMonth()}/>
+                    <div key={uuidv4()} className="week">
+                      <Week days={week} month={this.actual.getMonth()}/>
+                    </div>
                 ))}
               </div>
             </Cell>
