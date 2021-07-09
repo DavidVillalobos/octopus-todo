@@ -6,9 +6,9 @@ import Week from './Week';
 const { JsonCalendar } = require('json-calendar');
 
 class Calendar extends Component {
-  actual = new Date() //1999, 8, 7
+  actual = new Date(1999, 8, 7);
   getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'en' })
-  getWeeks = () => this.getCalendar().weeks.slice(0, 5).map(w => w.map(d => d.day));
+  getWeeks = () => this.getCalendar().weeks.slice(0, 5);
   getDayNames = () => this.getCalendar().dayNames;
 
   render() {
@@ -19,7 +19,7 @@ class Calendar extends Component {
               <div className="month">
                 <HeaderMonth MonthName={this.getCalendar().monthNames[this.actual.getMonth()]} DayNames={this.getDayNames()}/>
                 {this.getWeeks().map(week => (
-                  <Week days={week}/>
+                  <Week days={week} month={this.actual.getMonth()}/>
                 ))}
               </div>
             </Cell>

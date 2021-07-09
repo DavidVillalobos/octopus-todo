@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 
 class Day extends Component {
+  style =  ( this.props.month == this.props.day.monthIndex ? "white" : "gray");
   render() {
     return (
-      <div class="card">
-        <div class="card-section day">
-          {this.props.data}
+      <div className="card">
+        <div className={"card-section day " + this.style}>
+          {this.props.day.day}
         </div>
       </div>            
     );

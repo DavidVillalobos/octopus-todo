@@ -9,7 +9,7 @@ class Week extends Component {
       	  <Grid>
             {this.props.days.map(day => (
             <Cell small={1} large={1}>
-                <Day data={day}/>
+                <Day day={day} month={this.props.month}/>
             </Cell>
             ))}
           </Grid>
