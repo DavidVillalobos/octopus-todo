@@ -8,19 +8,7 @@ class ColumnDashBoard extends Component {
                 {this.props.columnName} 
             </div>
             <div className="card-section content-section">
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
-                <SimpleTask name="example" duedate="dd-mm-yyyy"/>
+                <SimpleTask task={{name:"example", duedate:"dd-mm-yyyy"}}/>
            </div>
         </div>   
     );

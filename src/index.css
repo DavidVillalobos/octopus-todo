@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  border: 0px !important;
 }
 
 body {
@@ -58,7 +59,17 @@ ul.header li a:hover{
 }
 
 .day{
-  height: 95px;
+  height: 98px;
+  border-bottom: 1px solid gray !important;
+  border-right: 1px solid gray !important;
+}
+
+.gray{
+  background-color: rgb(80, 80, 80);
+}
+
+.white{
+  background-color: white;
 }
 
 .week{
@@ -74,8 +85,9 @@ ul.header li a:hover{
   margin-bottom: -23px;
 }
 
-.radios-border{
-  border-radius: 10px !important;
+.simple-task{
+  width: 100%;
+  height: auto;
 }
 
 .name-month{
