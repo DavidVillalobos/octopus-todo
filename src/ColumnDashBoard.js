@@ -1,15 +1,16 @@
 import React, { Component } from "react";
-import SimpleTask from "./SimpleTask"
+import Task from "./Task"
 class ColumnDashBoard extends Component {
+  task = {name:"example", duedate:"dd-mm-yyyy", description:"aja", state:1};
   render() {
     return (
         <div className="card dashboard-column">
-            <div class="card-divider dashboard-column-header">
+            <div className="card-divider dashboard-column-header">
                 {this.props.columnName} 
             </div>
             <div className="card-section content-section">
-                <SimpleTask task={{name:"example", duedate:"dd-mm-yyyy"}}/>
-           </div>
+              <Task task={this.task}/>
+            </div>
         </div>   
     );
   }

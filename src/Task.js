@@ -1,13 +1,26 @@
 import React, { Component } from "react";
+import {Grid,Cell} from 'react-foundation';
 
 class Task extends Component {
   render() {
     return (
-      <div className="task">
-        <h2>{this.props.name}</h2>
-        <p> {this.props.description}</p>
-        <p> {this.props.duedate} </p>
-        <p> {this.props.status}</p>
+      <div className="card simple-task">
+        <div className="card-section">
+          <Grid>
+              <Cell small={6} large={3}>
+                {this.props.task.name} 
+              </Cell>
+              <Cell small={6} large={3}>
+                {this.props.task.name}  
+              </Cell>
+              <Cell small={6} large={3}>
+                {this.props.task.name}  
+              </Cell>
+              <Cell small={6} large={3}>
+                {this.props.task.name} 
+              </Cell>
+          </Grid>
+        </div>
       </div>
     );
   }

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import SimpleTask from "./SimpleTask";
+import Task from "./Task";
 
 class Home extends Component {
+  task = {name:"example", duedate:"dd-mm-yyyy", description:"aja", state:1};
   render() {
     return (
       <div className="nav-page">
-        <SimpleTask name="send email" duedate="14-06-2021" state="TODO"/>
-        <SimpleTask name="buy eat" duedate="15-06-2021" state="TODO"/>
+         <Task task={this.task}/>
       </div>
     );
   }

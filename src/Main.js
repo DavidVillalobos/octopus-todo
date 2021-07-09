@@ -18,25 +18,25 @@ class Main extends Component {
 	        <ul className="header">
             <li>
               <NavLink exact to="/">
-              <HomeIcon class="navbar-icon"/>
+              <HomeIcon className="navbar-icon"/>
               <span> Home </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/tasks">
-              <CollectionIcon class="navbar-icon"/>
+              <CollectionIcon className="navbar-icon"/>
               <span> Tasks </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/dashboard"> 
-              <ViewBoardsIcon class="navbar-icon"/>
+              <ViewBoardsIcon className="navbar-icon"/>
               <span> Dashboard </span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/calendar">
-              <CalendarIcon class="navbar-icon"/>
+              <CalendarIcon className="navbar-icon"/>
               <span> Calendar </span> 
               </NavLink>
             </li>

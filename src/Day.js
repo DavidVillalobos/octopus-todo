@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 class Day extends Component {
-  style =  ( this.props.month == this.props.day.monthIndex ? "white" : "gray");
+  style =  ( this.props.month === this.props.day.monthIndex ? "white" : "gray");
   render() {
     return (
       <div className="card">

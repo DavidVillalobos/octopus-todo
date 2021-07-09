@@ -6,7 +6,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="nav-page">
- 
        <Grid>
         <Cell small={4} large={4}>
           <ColumnDashBoard columnName="Todo"/>
