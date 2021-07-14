@@ -4,7 +4,7 @@ import {Grid,Cell} from 'react-foundation';
 class Task extends Component {
   render() {
     return (
-      <div className="card simple-task">
+      <div className="card simple-task noselect">
         <div className="card-section">
           <Grid>
               <Cell small={6} large={3}>

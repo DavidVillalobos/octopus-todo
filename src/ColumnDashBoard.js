@@ -5,7 +5,7 @@ class ColumnDashBoard extends Component {
   render() {
     return (
         <div className="card dashboard-column">
-            <div className="card-divider dashboard-column-header">
+            <div className="card-divider dashboard-column-header noselect">
                 {this.props.columnName} 
             </div>
             <div className="card-section content-section">

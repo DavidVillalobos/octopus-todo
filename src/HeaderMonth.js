@@ -16,7 +16,7 @@ class HeaderMonth extends Component {
                         <Cell small={2} large={4}>
                           <ChevronLeftIcon className="month-arrow-icon" onClick={this.props.PrevMonth}/>
                         </Cell>
-                        <Cell small={8} large={4}>
+                        <Cell small={8} large={4} className="noselect">
                           {this.props.MonthName} {this.props.Year}
                         </Cell>
                         <Cell small={2} large={4}>
@@ -28,7 +28,7 @@ class HeaderMonth extends Component {
             </Cell>
             {this.props.DayNames.map(day => (
               <Cell key={uuidv4()}  small={1} large={1}>
-                  <div className="header-month-card card">
+                  <div className="header-month-card card noselect">
                       <div className="card-section">
                           {day.name}
                       </div>
