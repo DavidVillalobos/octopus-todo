@@ -16,12 +16,12 @@
   "homepage": "https://github.com/DavidVillalobos/tudu",
   "main": "public/electron.js",
   "dependencies": {
-    "@heroicons/react": "^1.0.1",
-    "@testing-library/jest-dom": "^5.12.0",
+    "@heroicons/react": "^1.0.2",
+    "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "cross-env": "^7.0.3",
-    "electron": "^12.0.9",
+    "electron": "^12.0.15",
     "electron-is-dev": "^2.0.0",
     "foundation-sites": "^6.6.3",
     "json-calendar": "^1.11.0",
@@ -60,7 +60,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^6.1.0",
+    "concurrently": "^6.2.0",
     "wait-on": "^5.3.0"
   }
 }
