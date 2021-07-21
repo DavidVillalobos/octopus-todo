@@ -3,7 +3,7 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from 'uuid'
 import ColumnDashBoard from "./ColumnDashBoard"
 
-class Dashboard extends Component {
+class DashBoard extends Component {
 
   constructor(props) {
     super(props);
@@ -104,4 +104,4 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default DashBoard;

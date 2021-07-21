@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Task from "./Task";
+import Task from "../DashBoard/Task";
 
-class ListTasks extends Component {
+class Home extends Component {
   task = { name: "example", duedate: "dd-mm-yyyy", description: "aja", state: 1 };
   render() {
     return (
@@ -12,4 +12,4 @@ class ListTasks extends Component {
   }
 }
 
-export default ListTasks;
+export default Home;
