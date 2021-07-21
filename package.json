@@ -5,15 +5,22 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DavidVillalobos/tudu.git"
+    "url": "git+https://github.com/DavidVillalobos/octopus-todo.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "electron",
+    "reactjs",
+    "desktop",
+    "todolist",
+    "foundation-sites",
+    "heroicons"
+  ],
+  "author": "DavidVillalobos",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/DavidVillalobos/tudu/issues"
+    "url": "https://github.com/DavidVillalobos/octopus-todo/issues"
   },
-  "homepage": "https://github.com/DavidVillalobos/tudu",
+  "homepage": "https://github.com/DavidVillalobos/octopus-todo",
   "main": "public/electron.js",
   "dependencies": {
     "@heroicons/react": "^1.0.2",
@@ -26,6 +33,7 @@
     "foundation-sites": "^6.6.3",
     "json-calendar": "^1.11.0",
     "react": "^17.0.2",
+    "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^17.0.2",
     "react-foundation": "^0.9.7",
     "react-router-dom": "^5.2.0",
