@@ -10,8 +10,8 @@ This version is still in development, there is not yet a first usable version.
 
 * [Electron](https://www.electronjs.org/)  
 * [Reactjs](https://es.reactjs.org/)
-* Fundation-sites (https://get.foundation/sites/docs/)
-* [hero-icons]()
+* (Fundation-sites)(https://get.foundation/sites/docs/)
+* [hero-icons](https://heroicons.com/)
 
 ## Installation
 To use this version in development you must download the [code](https://github.com/DavidVillalobos/octopus-todo/archive/refs/heads/master.zip).  
