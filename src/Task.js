@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Grid,Cell} from 'react-foundation';
+import { Grid, Cell } from 'react-foundation';
 
 class Task extends Component {
   render() {
@@ -7,18 +7,18 @@ class Task extends Component {
       <div className="card simple-task noselect">
         <div className="card-section">
           <Grid>
-              <Cell small={6} large={3}>
-                {this.props.task.name} 
-              </Cell>
-              <Cell small={6} large={3}>
-                {this.props.task.name}  
-              </Cell>
-              <Cell small={6} large={3}>
-                {this.props.task.name}  
-              </Cell>
-              <Cell small={6} large={3}>
-                {this.props.task.name} 
-              </Cell>
+            <Cell small={6} large={3}>
+              {this.props.content.name}
+            </Cell>
+            <Cell small={6} large={3}>
+              {this.props.content.name}
+            </Cell>
+            <Cell small={6} large={3}>
+              {this.props.content.name}
+            </Cell>
+            <Cell small={6} large={3}>
+              {this.props.content.name}
+            </Cell>
           </Grid>
         </div>
       </div>
