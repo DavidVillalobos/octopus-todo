@@ -4,14 +4,14 @@ each task can be scheduled and displayed on a dashboard,
 it can also be viewed from a calendar.   
 
 ## Notes
-This is version in development, there is not yet a first usable version
+This version is still in development, there is not yet a first usable version.
 
 ## Build
 
-* Electron  
-* Reactjs
-* Fundation-sites
-* hero-icons
+* [Electron](https://www.electronjs.org/)  
+* [Reactjs](https://es.reactjs.org/)
+* Fundation-sites (https://get.foundation/sites/docs/)
+* [hero-icons]()
 
 ## Installation
 To use this version in development you must download the [code](https://github.com/DavidVillalobos/octopus-todo/archive/refs/heads/master.zip).  
