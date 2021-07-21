@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import {Grid,Cell} from 'react-foundation';
+import { Grid, Cell } from 'react-foundation';
 import HeaderMonth from './HeaderMonth';
-import ColumnDashBoard from './ColumnDashBoard';
 import Week from './Week';
-import {v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 const { JsonCalendar } = require('json-calendar');
 
 class Calendar extends Component {
@@ -16,43 +15,43 @@ class Calendar extends Component {
   getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'es' })
   getWeeks = () => this.getCalendar().weeks.slice(0, 6);
   getDayNames = () => this.getCalendar().dayNames;
-  PrevMonth(){
+  PrevMonth() {
     this.setState({
-      actual : new Date(this.actual.setMonth(this.actual.getMonth()-1))
+      actual: new Date(this.actual.setMonth(this.actual.getMonth() - 1))
     })
   }
-  NextMonth(){
+  NextMonth() {
     this.setState({
-      actual : new Date(this.actual.setMonth(this.actual.getMonth()+1))
+      actual: new Date(this.actual.setMonth(this.actual.getMonth() + 1))
     })
   }
   render() {
-    return ( 
+    return (
       <div className="nav-page">
         <Grid>
-            <Cell small={9} large={9}>
-              <div className="month">
-                <HeaderMonth 
-                  Year={this.actual.getFullYear()} 
-                  MonthName={this.getCalendar().monthNames[this.actual.getMonth()]} 
-                  DayNames={this.getDayNames()}
-                  NextMonth={this.NextMonth}
-                  PrevMonth={this.PrevMonth}
-                />
-                {this.getWeeks().map(week => (
-                    <div key={uuidv4()} className="week">
-                      <Week days={week} month={this.actual.getMonth()}/>
-                    </div>
-                ))}
-              </div>
-            </Cell>
-            <Cell small={3} large={3}>
-                <ColumnDashBoard columnName="Pending tasks"/>
-            </Cell>
+          <Cell small={9} large={9}>
+            <div className="month">
+              <HeaderMonth
+                Year={this.actual.getFullYear()}
+                MonthName={this.getCalendar().monthNames[this.actual.getMonth()]}
+                DayNames={this.getDayNames()}
+                NextMonth={this.NextMonth}
+                PrevMonth={this.PrevMonth}
+              />
+              {this.getWeeks().map(week => (
+                <div key={uuidv4()} className="week">
+                  <Week days={week} month={this.actual.getMonth()} />
+                </div>
+              ))}
+            </div>
+          </Cell>
+          <Cell small={3} large={3}>
+
+          </Cell>
         </Grid>
       </div>
     );
   }
 }
- 
+
 export default Calendar;
