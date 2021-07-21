@@ -5,6 +5,6 @@ import "./index.css";
 import 'foundation-sites/dist/css/foundation.min.css';
 
 ReactDOM.render(
-  <Main/>, 
+  <Main />,
   document.getElementById("root")
 );
