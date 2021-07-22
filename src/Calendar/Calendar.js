@@ -28,7 +28,7 @@ class Calendar extends Component {
   render() {
     return (
       <div className="nav-page">
-        <Grid>
+        <Grid style={{ userSelect: "none" }}>
           <Cell small={9} large={9}>
             <div className="month">
               <HeaderMonth
