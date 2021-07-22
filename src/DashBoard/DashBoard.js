@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
+import { Colors } from "react-foundation";
 import { v4 as uuidv4 } from 'uuid'
 import ColumnDashBoard from "./ColumnDashBoard"
 
@@ -14,29 +15,22 @@ class DashBoard extends Component {
   }
 
   itemsFromBackend = [
-    { id: uuidv4(), name: "First task", state: 0 },
-    { id: uuidv4(), name: "First task", state: 2 },
-    { id: uuidv4(), name: "Second task", state: 1 },
-    { id: uuidv4(), name: "Third task", state: 1 },
-    { id: uuidv4(), name: "Third task", state: 2 },
-    { id: uuidv4(), name: "Third task", state: 0 },
-    { id: uuidv4(), name: "Fourth task", state: 2 },
-    { id: uuidv4(), name: "Fourth task", state: 0 },
-    { id: uuidv4(), name: "Fourth task", state: 1 },
-    { id: uuidv4(), name: "Fifth task", state: 1 }
+    { id: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, bgColor: "lightyellow", textColor: "black" },
+    { id: uuidv4(), name: "Study Science", duedate: "20/07/2021", state: 0, bgColor: "lightred", textColor: "black" },
+    { id: uuidv4(), name: "Buy dinner", duedate: "20/07/2021", state: 2, bgColor: "lightgreen", textColor: "black" },
   ];
 
   columnsFromBackend = [
     {
-      columnId: 1,
+      columnId: 0,
       name: "To do",
       items: []
     }, {
-      columnId: 2,
+      columnId: 1,
       name: "In Progress",
       items: []
     }, {
-      columnId: 3,
+      columnId: 2,
       name: "Done",
       items: []
     }
@@ -49,6 +43,7 @@ class DashBoard extends Component {
   }
 
   onDragEnd = (result) => {
+    window.scrollTo(0, 0);
     if (!result.destination) return;
     const { source, destination } = result;
     if (source.droppableId !== destination.droppableId) { // CHANGE STATE

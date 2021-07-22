@@ -16,17 +16,9 @@ class ColumnDashBoard extends Component {
           <Droppable droppableId={this.props.columnId} key={this.props.columnId}>
             {(provided, snapshot) => {
               return (
-                <div
+                <div className="draggable-column"
                   {...provided.droppableProps}
                   ref={provided.innerRef}
-                  style={{
-                    background: snapshot.isDraggingOver
-                      ? "lightblue"
-                      : "lightgrey",
-                    padding: 4,
-                    width: 250,
-                    minHeight: 500
-                  }}
                 >
                   {this.props.column.items.map((item, index) => {
                     return (
@@ -43,13 +35,6 @@ class ColumnDashBoard extends Component {
                               {...provided.dragHandleProps}
                               style={{
                                 userSelect: "none",
-                                padding: 16,
-                                margin: "0 0 8px 0",
-                                minHeight: "50px",
-                                backgroundColor: snapshot.isDragging
-                                  ? "#263B4A"
-                                  : "#456C86",
-                                color: "white",
                                 ...provided.draggableProps.style
                               }}
                             >
