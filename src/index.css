@@ -18,7 +18,7 @@ ul.header li {
 }
 
 ul.header, header{
-  background-color: rgb(43, 41, 41);
+  background-color: rgb(41, 41, 41);
 }
 
 ul.header li a {
@@ -30,7 +30,7 @@ ul.header li a {
 } 
 
 ul.header li a:hover{
-  background-color: rgb(56, 55, 55);
+  background-color: rgb(55, 55, 55);
 }
 
 .navbar-icon{
@@ -50,32 +50,37 @@ ul.header li a:hover{
 
 .content {
   background-color: #FFF;
+  height: 100%;
+  width: 100%;
 }
 
 .active {
-  background-color: rgb(75, 74, 74);
+  background-color: rgb(75, 75, 75);
 }
 
 .dashboard-column-header{
-  background-color: rgb(56, 55, 55) !important;
+  background-color: rgb(55, 55, 55) !important;
   color: #FFF;
-  height: 60px;
   font-size: 20px;
-
+  height: 100%;
+  width: 100%;
 }
 
 .dashboard-column {
   border: 0px !important;
+  height: 100%;
+  width: 100%;
 }
 
 .day{
   height: 82px;
+  width: auto;
   border-bottom: 1px solid gray !important;
   border-right: 1px solid gray !important;
 }
 
 .gray{
-  background-color: rgb(84, 84, 84);
+  background-color: rgb(85, 85, 85);
 }
 
 .white{
@@ -95,11 +100,6 @@ ul.header li a:hover{
   margin-bottom: -23px;
 }
 
-.simple-task{
-  width: 100%;
-  height: auto;
-}
-
 .name-month{
   height: 80px !important;
   margin-bottom: -25px !important;
@@ -110,18 +110,15 @@ ul.header li a:hover{
 }
 
 .header-month-card{
-  background-color: rgb(50, 49, 49) !important;
+  background-color: rgb(50, 50, 50) !important;
   color: white !important;
-  height: 70%;
   border: 0px !important;
 }
 
 .content-section{
-  height: 535px !important;
-  min-height: 535px !important;
-  max-height: 535px !important;
+  height: 530px;
   overflow-y: scroll;
-  background-color: rgb(75, 74, 74);
+  background-color: rgb(75, 75, 75);
 }
 
 ::-webkit-scrollbar {
@@ -129,7 +126,7 @@ ul.header li a:hover{
 }
 
 ::-webkit-scrollbar-track {
-  background-color: rgb(50, 49, 49);
+  background-color: rgb(50, 50, 50);
 }
  
 ::-webkit-scrollbar-thumb {
@@ -139,12 +136,10 @@ ul.header li a:hover{
   background: #555; 
 }
 
-.noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+.draggable-column{
+  height: 100%;
+}
+
+.card-task{
+  border-radius: 5px !important;
 }
