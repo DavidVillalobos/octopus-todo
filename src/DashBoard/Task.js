@@ -20,11 +20,11 @@ class Task extends Component {
               <ClockIcon className="navbar-icon" />
               {this.props.content.duedate}
             </Cell>
-            <Cell small={12} large={6}>
+            <Cell small={12} large={12}>
               Description:
               {this.props.content.description}
             </Cell>
-            <Cell small={12} large={6}>
+            <Cell small={12} large={12}>
               State (temp):
               {this.props.content.state}
             </Cell>
