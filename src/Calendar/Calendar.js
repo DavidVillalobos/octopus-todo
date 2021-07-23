@@ -3,6 +3,7 @@ import { Grid, Cell } from 'react-foundation';
 import HeaderMonth from './HeaderMonth';
 import Week from './Week';
 import { v4 as uuidv4 } from 'uuid'
+import ColumnScheduleTask from "./ColumnScheduleTask";
 const { JsonCalendar } = require('json-calendar');
 
 class Calendar extends Component {
@@ -27,29 +28,27 @@ class Calendar extends Component {
   }
   render() {
     return (
-      <div className="nav-page">
-        <Grid style={{ userSelect: "none" }}>
-          <Cell small={9} large={9}>
-            <div className="month">
-              <HeaderMonth
-                Year={this.actual.getFullYear()}
-                MonthName={this.getCalendar().monthNames[this.actual.getMonth()]}
-                DayNames={this.getDayNames()}
-                NextMonth={this.NextMonth}
-                PrevMonth={this.PrevMonth}
-              />
-              {this.getWeeks().map(week => (
-                <div key={uuidv4()} className="week">
-                  <Week days={week} month={this.actual.getMonth()} />
-                </div>
-              ))}
-            </div>
-          </Cell>
-          <Cell small={3} large={3}>
-
-          </Cell>
-        </Grid>
-      </div>
+      <Grid style={{ userSelect: "none" }}>
+        <Cell small={9} large={9}>
+          <div className="month">
+            <HeaderMonth
+              Year={this.actual.getFullYear()}
+              MonthName={this.getCalendar().monthNames[this.actual.getMonth()]}
+              DayNames={this.getDayNames()}
+              NextMonth={this.NextMonth}
+              PrevMonth={this.PrevMonth}
+            />
+            {this.getWeeks().map(week => (
+              <div key={uuidv4()} className="week">
+                <Week days={week} month={this.actual.getMonth()} />
+              </div>
+            ))}
+          </div>
+        </Cell>
+        <Cell small={3} large={3} style={{ background: "white" }}>
+          <ColumnScheduleTask />
+        </Cell>
+      </Grid >
     );
   }
 }
