@@ -15,39 +15,37 @@ class Main extends Component {
   render() {
     return (
       <HashRouter>
-        <div>
-          <ul className="header">
-            <li>
-              <NavLink exact to="/" style={{ userSelect: "none" }}>
-                <HomeIcon className="navbar-icon noselect" />
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/tasks" style={{ userSelect: "none" }}>
-                <CollectionIcon className="navbar-icon noselect" />
-                Tasks
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/dashboard" style={{ userSelect: "none" }}>
-                <ViewBoardsIcon className="navbar-icon noselect" />
-                DashBoard
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/calendar" style={{ userSelect: "none" }}>
-                <CalendarIcon className="navbar-icon noselect" />
-                Calendar
-              </NavLink>
-            </li>
-          </ul>
-          <div className="content">
-            <Route exact path="/" component={Home} />
-            <Route path="/tasks" component={ListTasks} />
-            <Route path="/dashboard" component={Dashboard} />
-            <Route path="/calendar" component={Calendar} />
-          </div>
+        <ul className="header" style={{ userSelect: "none" }}>
+          <li>
+            <NavLink exact to="/">
+              <HomeIcon className="navbar-icon" />
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/tasks">
+              <CollectionIcon className="navbar-icon" />
+              Tasks
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard">
+              <ViewBoardsIcon className="navbar-icon" />
+              DashBoard
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/calendar">
+              <CalendarIcon className="navbar-icon" />
+              Calendar
+            </NavLink>
+          </li>
+        </ul>
+        <div className="content">
+          <Route exact path="/" component={Home} />
+          <Route path="/tasks" component={ListTasks} />
+          <Route path="/dashboard" component={Dashboard} />
+          <Route path="/calendar" component={Calendar} />
         </div>
       </HashRouter>
     );
