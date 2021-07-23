@@ -3,8 +3,7 @@ import { Grid, Cell } from 'react-foundation';
 import HeaderMonth from './HeaderMonth';
 import Week from './Week';
 import { v4 as uuidv4 } from 'uuid'
-import ColumnScheduleTask from "./ColumnScheduleTask";
-const { JsonCalendar } = require('json-calendar');
+import { JsonCalendar } from 'json-calendar';
 
 class Calendar extends Component {
   constructor(props) {
@@ -29,24 +28,21 @@ class Calendar extends Component {
   render() {
     return (
       <Grid style={{ userSelect: "none" }}>
-        <Cell small={9} large={9}>
-          <div className="month">
-            <HeaderMonth
-              Year={this.actual.getFullYear()}
-              MonthName={this.getCalendar().monthNames[this.actual.getMonth()]}
-              DayNames={this.getDayNames()}
-              NextMonth={this.NextMonth}
-              PrevMonth={this.PrevMonth}
-            />
-            {this.getWeeks().map(week => (
-              <div key={uuidv4()} className="week">
-                <Week days={week} month={this.actual.getMonth()} />
-              </div>
-            ))}
-          </div>
+        <Cell small={12} large={12}>
+          <HeaderMonth
+            Year={this.actual.getFullYear()}
+            MonthName={this.getCalendar().monthNames[this.actual.getMonth()]}
+            DayNames={this.getDayNames()}
+            NextMonth={this.NextMonth}
+            PrevMonth={this.PrevMonth}
+          />
         </Cell>
-        <Cell small={3} large={3} style={{ background: "white" }}>
-          <ColumnScheduleTask />
+        <Cell small={12} large={12}>
+          {this.getWeeks().map(week => (
+            <div key={uuidv4()}>
+              <Week days={week} month={this.actual.getMonth()} />
+            </div>
+          ))}
         </Cell>
       </Grid >
     );
