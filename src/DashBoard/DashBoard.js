@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { DragDropContext } from "react-beautiful-dnd";
-import { Colors } from "react-foundation";
 import { v4 as uuidv4 } from 'uuid'
 import ColumnDashBoard from "./ColumnDashBoard"
 
@@ -9,37 +8,34 @@ class DashBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: this.columnsFromBackend
+      columns: this.loadColumnsFromDisk(),
+      items: this.loadItemsFromDisk()
     };
-    this.loadTaskFromBackend();
+    this.state.items.forEach((item => {
+      if (0 <= item.state && item.state <= this.state.columns.length) {
+        this.state.columns[item.state].items.push(item);
+      } else {
+        this.state.columns[0].items.push(item);
+        item.state = 0;
+      }
+    }));
   }
 
-  itemsFromBackend = [
-    { id: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, bgColor: "lightyellow", textColor: "black" },
-    { id: uuidv4(), name: "Study Science", duedate: "20/07/2021", state: 0, bgColor: "lightred", textColor: "black" },
-    { id: uuidv4(), name: "Buy dinner", duedate: "20/07/2021", state: 2, bgColor: "lightgreen", textColor: "black" },
-  ];
+  loadItemsFromDisk() {
+    return [
+      { id: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
+      { id: uuidv4(), name: "Study Science", duedate: "21/06/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
+      { id: uuidv4(), name: "Buy dinner", duedate: "22/08/2021", state: 2, bgColor: "#1373aa", textColor: "white" },
+      { id: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, bgColor: "#1373aa", textColor: "white" },
+    ];
+  }
 
-  columnsFromBackend = [
-    {
-      columnId: 0,
-      name: "To do",
-      items: []
-    }, {
-      columnId: 1,
-      name: "In Progress",
-      items: []
-    }, {
-      columnId: 2,
-      name: "Done",
-      items: []
-    }
-  ];
-
-  loadTaskFromBackend = function () {
-    this.itemsFromBackend.forEach((item => {
-      this.columnsFromBackend[item.state].items.push(item);
-    }));
+  loadColumnsFromDisk() {
+    return [
+      { columnId: 0, name: "To do", items: [] },
+      { columnId: 1, name: "In Progress", items: [] },
+      { columnId: 2, name: "Done", items: [] }
+    ];
   }
 
   onDragEnd = (result) => {
