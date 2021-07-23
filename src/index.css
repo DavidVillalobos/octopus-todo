@@ -1,29 +1,27 @@
-* {
+*, .header {
   margin: 0px;
   padding: 0px;
   border: 0px !important;
+  overflow: hidden;
 }
 
 body {
   background-color: #1373aa !important;
-  overflow: hidden;
-}
-
-.header{
-  margin: 0;
 }
 
 ul.header li {
   display: inline;
 }
 
-ul.header, header{
+ul.header{
   background-color: rgb(41, 41, 41);
+  height: 46px;
 }
 
 ul.header li a {
   color: white;
   width: 25%;
+  font-size: 1em;
   display: inline-block;
   text-align: center;
   padding: 10px;
@@ -36,22 +34,18 @@ ul.header li a:hover{
 .navbar-icon{
   height: 20px;
   margin-bottom: -3px;
+  margin-right: 10px;
 }
 
 .month-arrow-icon{
-  height: 40px;
-  margin-top: -10px;
+  height: 45px;
+  margin-top: -5px;
 }
 
 .month-arrow-icon:hover{
-  margin-top: -15px;
-  height: 55px;
-}
-
-.content {
-  background-color: #FFF;
-  height: 100%;
-  width: 100%;
+  height: 50px;
+  margin-top: -10px;
+  cursor: pointer;
 }
 
 .active {
@@ -61,22 +55,7 @@ ul.header li a:hover{
 .dashboard-column-header{
   background-color: rgb(55, 55, 55) !important;
   color: #FFF;
-  font-size: 20px;
-  height: 100%;
-  width: 100%;
-}
-
-.dashboard-column {
-  border: 0px !important;
-  height: 100%;
-  width: 100%;
-}
-
-.day{
-  height: 82px;
-  width: auto;
-  border-bottom: 1px solid gray !important;
-  border-right: 1px solid gray !important;
+  font-size: 1.3em;
 }
 
 .gray{
@@ -87,31 +66,48 @@ ul.header li a:hover{
   background-color: white;
 }
 
-.week{
-  margin-bottom: -16px;
+.day{
+  height: 5.04em;
+  width: 11.43em;
 }
 
-.month{
-  margin: 0%;
-  margin-right: -72%;
+.week{
+  margin-bottom: -16px;
+  display: flex;
+  justify-content: left;
 }
 
 .header-month{
   margin-bottom: -23px;
 }
 
+.name-day-week{
+  background-color: rgb(50, 50, 50) !important;
+  color: white !important;
+}
+
 .name-month{
-  height: 80px !important;
-  margin-bottom: -25px !important;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(50, 50, 50) !important;
+  color: white !important;
   font-size: 30px;
+  margin-bottom: -25px;
+}
+
+.month-name-token{
+  width: 20%;
   text-align: center;
-  padding-right: 40%;
-  padding-top: -55%;
+}
+
+.month-name-word{
+  width: 60%;
+  text-align: center;
 }
 
 .header-month-card{
-  background-color: rgb(50, 50, 50) !important;
-  color: white !important;
+  display: flex;
+  justify-content: space-between;
 }
 
 .content-section{
@@ -127,7 +123,7 @@ ul.header li a:hover{
 ::-webkit-scrollbar-track {
   background-color: rgb(50, 50, 50);
 }
- 
+
 ::-webkit-scrollbar-thumb {
   background: #888; 
 }
@@ -139,25 +135,25 @@ ul.header li a:hover{
   height: 100%;
 }
 
+.list-task{
+  height: 592px;
+  padding: 15px;
+  background-color: rgb(75, 75, 75);
+  overflow-y: scroll;
+}
+
+.home-task{
+  height: 592px;
+  padding: 15px;
+  background-color: rgb(75, 75, 75);
+}
+
+.dashboard-column {
+  height: 100%;
+  width: 100%;
+}
+
 .card-task{
   border-radius: 5px !important;
-}
-
-.arrow-month-card{
-  background-color: rgb(75, 75, 75);
-  margin-right: 28px;
-}
-
-.column-schedule{
-  height: 536px;
-  overflow-y: scroll;
-  background-color: rgb(75, 75, 75);
-  margin-right: -10px;
-}
-
-.title-column-schedule{
-  background-color: rgb(55, 55, 55) !important;
-  color: #FFF;
-  font-size: 1.3em;
-  padding-left: 60px !important;
+  box-shadow: 4px 4px 4px rgb(50, 50, 50) !important;
 }
