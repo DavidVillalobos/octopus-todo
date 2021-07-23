@@ -13,11 +13,11 @@ class Task extends Component {
         }}>
           <Grid>
             <Cell small={12} large={6}>
-              <ArrowRightIcon style={{ height: 15 }} />
+              <ArrowRightIcon className="navbar-icon" />
               Name: {this.props.content.name}
             </Cell>
             <Cell small={12} large={6}>
-              <ClockIcon style={{ height: 12 }} />
+              <ClockIcon className="navbar-icon" />
               {this.props.content.duedate}
             </Cell>
             <Cell small={12} large={6}>

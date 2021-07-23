@@ -9,8 +9,8 @@ class HeaderMonth extends Component {
     return (
       <div>
         <Grid className="header-month">
-          <Cell small={12} large={12} className="name-month-card">
-            <div className="header-month-card name-month card">
+          <Cell small={12} large={12}>
+            <div className="header-month-card name-month">
               <div className="card-section">
                 <Grid>
                   <Cell small={2} large={4}>

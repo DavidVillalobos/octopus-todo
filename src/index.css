@@ -55,7 +55,7 @@ ul.header li a:hover{
 }
 
 .active {
-  background-color: rgb(75, 75, 75);
+  background-color: #1373aa;
 }
 
 .dashboard-column-header{
@@ -112,7 +112,6 @@ ul.header li a:hover{
 .header-month-card{
   background-color: rgb(50, 50, 50) !important;
   color: white !important;
-  border: 0px !important;
 }
 
 .content-section{
@@ -142,4 +141,23 @@ ul.header li a:hover{
 
 .card-task{
   border-radius: 5px !important;
+}
+
+.arrow-month-card{
+  background-color: rgb(75, 75, 75);
+  margin-right: 28px;
+}
+
+.column-schedule{
+  height: 536px;
+  overflow-y: scroll;
+  background-color: rgb(75, 75, 75);
+  margin-right: -10px;
+}
+
+.title-column-schedule{
+  background-color: rgb(55, 55, 55) !important;
+  color: #FFF;
+  font-size: 1.3em;
+  padding-left: 60px !important;
 }
