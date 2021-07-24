@@ -14,7 +14,7 @@ class DashBoard extends Component {
     this.state.items.forEach((item => {
       if (0 <= item.state && item.state <= this.state.columns.length) {
         this.state.columns[item.state].items.push(item);
-      } else {
+      } else if (this.state.columns.length === 1) {
         this.state.columns[0].items.push(item);
         item.state = 0;
       }

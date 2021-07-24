@@ -8,8 +8,7 @@ class Task extends Component {
       <div className="card card-task">
         <div className="card-section" style={{
           background: this.props.content.bgColor,
-          color: this.props.content.textColor,
-          userSelect: "none"
+          color: this.props.content.textColor
         }}>
           <Grid>
             <Cell small={12} large={6}>
