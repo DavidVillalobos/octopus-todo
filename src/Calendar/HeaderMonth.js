@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Grid, Cell } from 'react-foundation';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/solid'
-
+import { ChevronLeftIcon, ChevronRightIcon, CalendarIcon } from '@heroicons/react/solid'
 import { v4 as uuidv4 } from 'uuid'
 
 class HeaderMonth extends Component {
@@ -15,6 +13,7 @@ class HeaderMonth extends Component {
                 <ChevronLeftIcon className="month-arrow-icon" onClick={this.props.PrevMonth} />
               </div>
               <div className="month-name-word">
+                <CalendarIcon class="calendar-icon" />
                 {this.props.MonthName} {this.props.Year}
               </div>
               <div className="month-name-token">
@@ -25,7 +24,7 @@ class HeaderMonth extends Component {
           <div className="header-month-card">
             {this.props.DayNames.map(day => (
               <div key={uuidv4()} className="card">
-                <div className="card-section name-day-week">
+                <div className="card-section name-day-week text-center">
                   {day.name}
                 </div>
               </div>

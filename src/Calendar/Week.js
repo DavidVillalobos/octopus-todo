@@ -7,9 +7,7 @@ class Week extends Component {
     return (
       <div className="week">
         {this.props.days.map(day => (
-          <div key={uuidv4()}>
-            <Day day={day} month={this.props.month} />
-          </div>
+          <Day key={uuidv4()} day={day} month={this.props.month} />
         ))}
       </div>
 
