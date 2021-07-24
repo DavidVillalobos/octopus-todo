@@ -13,7 +13,7 @@ class HeaderMonth extends Component {
                 <ChevronLeftIcon className="month-arrow-icon" onClick={this.props.PrevMonth} />
               </div>
               <div className="month-name-word">
-                <CalendarIcon class="calendar-icon" />
+                <CalendarIcon className="calendar-icon" />
                 {this.props.MonthName} {this.props.Year}
               </div>
               <div className="month-name-token">
