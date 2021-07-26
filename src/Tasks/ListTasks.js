@@ -80,19 +80,17 @@ class ListTasks extends Component {
         </Cell>
         <Cell small={9} large={9} className="tasks-section">
           <Grid>
-            <Cell small={12} large={12} className="panel-create-task">
+            <Cell className="panel-create-task">
               <Grid>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
-                  <input type="text" placeholder="Name"/>
+                  <input type="text" placeholder="Name" />
+                  <input type="date" placeholder="DueDate" />
                 </Cell>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={5} large={5}>
-                  <textarea placeholder="Description"/>
+                  <textarea placeholder="Description" />
                 </Cell>
-                <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
-                  <input type="date" placeholder="DueDate"/>
-                </Cell>
-                <Cell offsetOnSmall={1} offsetOnLarge={1} small={5} large={5} className="text-center">
-                  <Button>
+                <Cell small={12} large={12} className="text-center">
+                  <Button className="button-create">
                     <PlusCircleIcon className="navbar-icon" />
                     Create task
                   </Button>

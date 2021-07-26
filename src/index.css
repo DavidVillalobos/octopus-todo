@@ -188,5 +188,15 @@ ul.header li a:hover{
 }
 
 .panel-create-task{
-  margin: 10px;
+  background-color: rgb(50, 50, 50);
+  margin-bottom: 10px;
+  padding-top: 20px;
+}
+
+textarea{
+  height: 95px !important;
+}
+
+.button-create{
+  min-width: 200px;
 }
