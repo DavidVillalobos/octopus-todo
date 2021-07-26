@@ -183,12 +183,12 @@ ul.header li a:hover{
 .panel-todo-list{
   height: 592px;
   padding: 15px;
-  background-color: rgb(75, 75, 75);
+  background-color: rgb(60, 60, 56);
   overflow-y: scroll;
 }
 
 .panel-create-task{
-  background-color: rgb(50, 50, 50);
+  background-color: rgb(75, 75, 75);
   margin-bottom: 10px;
   padding-top: 20px;
 }
@@ -198,5 +198,5 @@ textarea{
 }
 
 .button-create{
-  min-width: 200px;
+  min-width: 367px;
 }
