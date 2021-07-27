@@ -22,6 +22,7 @@ class Main extends Component {
     };
     this.state.tasks.forEach(task => {
       this.state.columns[0].tasks.push(task);
+      this.state.taskList[0].tasks.push(task);
     })
   }
 
@@ -35,18 +36,19 @@ class Main extends Component {
 
   loadTaskList() {
     return [
+      { listId: 0, name: "English", state: 0, bgColor: "red", textColor: "white", tasks: [] },
       { listId: 0, name: "Math", state: 0, bgColor: "#1373aa", textColor: "white", tasks: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", tasks: [] },
-      { listId: 2, name: "Social", state: 0, bgColor: "#1373aa", textColor: "white", tasks: [] }
+      { listId: 1, name: "Science", state: 0, bgColor: "green", textColor: "white", tasks: [] },
+      { listId: 2, name: "Social", state: 0, bgColor: "blue", textColor: "white", tasks: [] }
     ];
   }
 
   loadTasks() {
     return [
-      { taskId: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Study Science", duedate: "21/06/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner", duedate: "22/08/2021", state: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, tasklist: 1, bgColor: "red", textColor: "white" },
+      { taskId: uuidv4(), name: "Study Science", duedate: "21/06/2021", state: 0, tasklist: 1, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner", duedate: "22/08/2021", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, tasklist: 0, bgColor: "green", textColor: "white" },
     ];
   }
 

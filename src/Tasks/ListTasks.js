@@ -6,6 +6,8 @@ import Task from "../DashBoard/Task";
 
 class ListTasks extends Component {
 
+  currentTaskList = this.props.taskList[0];
+
   handleClick(e) {
     if (e.type === 'click') {
       console.log('Left click');
@@ -24,11 +26,11 @@ class ListTasks extends Component {
               Tasks
             </Button>
             {this.props.taskList.map((list) => {
-              return (<Button key={uuidv4()}> {list.name} </Button>)
+              return (<Button key={uuidv4()} style={{ background: list.bgColor, color: list.color }}> {list.name} </Button>)
             })}
             <Button>
-              <PlusCircleIcon className="navbar-icodn" />
-              New List
+              <PlusCircleIcon className="navbar-icon" />
+              New
             </Button>
           </Menu>
         </Cell>
@@ -43,7 +45,7 @@ class ListTasks extends Component {
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={5} large={5}>
                   <textarea placeholder="Description" />
                 </Cell>
-                <Cell small={12} large={12} className="text-center">
+                <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10} className="text-center">
                   <Button className="button-create">
                     <PlusCircleIcon className="navbar-icon" />
                     Create task
@@ -53,10 +55,10 @@ class ListTasks extends Component {
             </Cell>
             <Cell small={12} large={12} className="panel-todo-list">
               <Grid>
-                {this.props.taskList[0].tasks.map((item) => {
+                {this.currentTaskList.tasks.map((task) => {
                   return (
                     <Cell key={uuidv4()} offsetOnLarge={1} offsetOnSmall={1} small={10} large={10}>
-                      <Task content={item} />
+                      <Task content={task} />
                     </Cell>
                   )
                 })}
