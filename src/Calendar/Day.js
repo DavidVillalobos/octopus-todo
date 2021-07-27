@@ -8,7 +8,7 @@ class Day extends Component {
     return (
       <div className="card day">
         <div className={this.style}>
-          <Grid className="aja">
+          <Grid className="block-day">
             <Cell className="text-center">
               <div className="number-day">
                 {this.props.day.day}
