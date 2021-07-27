@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
+import { Badge } from "react-foundation";
 import Task from "./Task"
 
 class ColumnDashBoard extends Component {
@@ -7,7 +8,7 @@ class ColumnDashBoard extends Component {
     return (
       <div className="card dashboard-column">
         <div className="card-divider dashboard-column-header" style={{ userSelect: "none" }}>
-          {this.props.columnName}
+          <Badge className="cant-task-column"> {this.props.tasks.length} </Badge> {this.props.columnName}
         </div>
         <div className="card-section content-section">
           <Droppable droppableId={this.props.columnId} key={this.props.columnId}>

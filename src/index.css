@@ -249,3 +249,10 @@ input[type="color"]:focus, input[type="color"]:active {
   box-shadow: none;
   background-color: transparent;
 }
+
+.cant-task-column{
+  font-size: 20px !important;
+  background-color: rgb(75, 75, 75) !important;
+  margin-top: -8px !important;
+  margin-right: 10px;
+}
