@@ -6,52 +6,6 @@ import Task from "../DashBoard/Task";
 
 class ListTasks extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      taskList: this.loadTaskListFromDisk(),
-      items: this.loadItemsFromDisk()
-    };
-    this.state.items.forEach((item => {
-      if (0 <= item.state && item.state <= this.state.taskList.length) {
-        this.state.taskList[item.state].items.push(item);
-      } else {
-        if (this.state.taskList.length === 1) {
-          this.state.taskList[0].items.push(item);
-          item.state = 0;
-        }
-      }
-    }));
-  }
-
-  loadItemsFromDisk() {
-    return [
-      { id: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
-      { id: uuidv4(), name: "Study Science", duedate: "21/06/2021", state: 0, bgColor: "#1373aa", textColor: "white" },
-      { id: uuidv4(), name: "Buy dinner", duedate: "22/08/2021", state: 2, bgColor: "#1373aa", textColor: "white" },
-      { id: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, bgColor: "#1373aa", textColor: "white" },
-      { id: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, bgColor: "#1373aa", textColor: "white" },
-      { id: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, bgColor: "#1373aa", textColor: "white" },
-    ];
-  }
-
-  loadTaskListFromDisk() {
-    return [
-      { listId: 0, name: "Math", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "#1373aa", textColor: "white", items: [] },
-      { listId: 2, name: "Social", state: 0, bgColor: "#1373aa", textColor: "white", items: [] }
-    ];
-  }
-
   handleClick(e) {
     if (e.type === 'click') {
       console.log('Left click');
@@ -69,11 +23,11 @@ class ListTasks extends Component {
               <CollectionIcon className="navbar-icon" />
               Tasks
             </Button>
-            {this.state.taskList.map((list) => {
+            {this.props.taskList.map((list) => {
               return (<Button key={uuidv4()}> {list.name} </Button>)
             })}
             <Button>
-              <PlusCircleIcon className="navbar-icon" />
+              <PlusCircleIcon className="navbar-icodn" />
               New List
             </Button>
           </Menu>
@@ -99,7 +53,7 @@ class ListTasks extends Component {
             </Cell>
             <Cell small={12} large={12} className="panel-todo-list">
               <Grid>
-                {this.state.items.map((item) => {
+                {this.props.taskList[0].tasks.map((item) => {
                   return (
                     <Cell key={uuidv4()} offsetOnLarge={1} offsetOnSmall={1} small={10} large={10}>
                       <Task content={item} />

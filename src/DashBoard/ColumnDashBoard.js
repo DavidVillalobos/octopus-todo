@@ -3,9 +3,6 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 import Task from "./Task"
 
 class ColumnDashBoard extends Component {
-  task = { name: "example", duedate: "dd-mm-yyyy", description: "aja", state: 1 };
-
-
   render() {
     return (
       <div className="card dashboard-column">
@@ -20,11 +17,11 @@ class ColumnDashBoard extends Component {
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
-                  {this.props.column.items.map((item, index) => {
+                  {this.props.tasks.map((task, index) => {
                     return (
                       <Draggable
-                        key={item.id}
-                        draggableId={item.id}
+                        key={task.taskId}
+                        draggableId={task.taskId}
                         index={index}
                       >
                         {(provided, snapshot) => {
@@ -38,7 +35,7 @@ class ColumnDashBoard extends Component {
                                 ...provided.draggableProps.style
                               }}
                             >
-                              <Task content={item} />
+                              <Task content={task} />
                             </div>
                           );
                         }}
