@@ -23,7 +23,7 @@ class Home extends Component {
           </Cell>
           <Cell offsetOnSmall={1} offsetOnLarge={1} large={10} small={10}>
             {this.loadImportantItemsFromDisk().map(item => {
-              return (<Task content={item} />)
+              return (<Task key={item.id} content={item} />)
             })
             }
           </Cell>
