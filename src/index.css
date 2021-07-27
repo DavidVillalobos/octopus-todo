@@ -183,13 +183,12 @@ ul.header li a:hover{
 .panel-todo-list{
   height: 592px;
   padding: 15px;
-  background-color: rgb(60, 60, 56);
+  background-color: rgb(75, 75, 75);
   overflow-y: scroll;
 }
 
 .panel-create-task{
-  background-color: rgb(75, 75, 75);
-  margin-bottom: 10px;
+  background-color: rgb(65, 65, 65);
   padding-top: 20px;
 }
 
