@@ -59,11 +59,11 @@ ul.header li a:hover{
 }
 
 .gray{
-  background-color: rgb(85, 85, 85);
+  background-color: rgb(55, 55, 55) !important;
 }
 
 .white{
-  background-color: white;
+  background-color: rgb(95, 95, 95);
 }
 
 .day{
@@ -82,8 +82,11 @@ ul.header li a:hover{
 }
 
 .name-day-week{
-  background-color: rgb(50, 50, 50) !important;
   color: white !important;
+  background-color: rgb(65, 65, 65) !important;
+  font-size: 1em !important;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #555 !important;
 }
 
 .name-month{
@@ -207,15 +210,16 @@ textarea{
 }
 
 .task-list-day{
-  margin-left: 4px;
-  margin-bottom: 2px;
-  width: 25px;
-  height: 25px;
+  margin: 5px;
+  margin-bottom: 7px;
+  width: 45px;
+  height: 45px;
   box-shadow: 2px 2px 2px rgb(50, 50, 50) !important;
 }
 
 .name-task-day{
-  padding: 3px;
+  padding: 10px;
+  font-size: 1.4em !important;
 }
 
 .number-day{

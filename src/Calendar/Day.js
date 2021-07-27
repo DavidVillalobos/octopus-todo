@@ -16,6 +16,7 @@ class Day extends Component {
             </Cell>
             <Cell className="task-day-panel">
               <TaskDay />
+              <TaskDay />
             </Cell>
           </Grid>
         </div>
