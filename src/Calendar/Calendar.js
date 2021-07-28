@@ -12,8 +12,23 @@ class Calendar extends Component {
     this.NextMonth = this.NextMonth.bind(this)
     this.actual = new Date();
   }
-  getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'es' })
-  getWeeks = () => this.getCalendar().weeks.slice(0, 6);
+  getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'en' })
+  getWeeks() {
+    let weeks = this.getCalendar().weeks.slice(0, 6);
+    let actualTask = 0;
+    weeks.forEach(week => {
+      week.forEach(day => {
+        day["taskList"] = [];
+        let dayString = ((day.day < 10) ? "0" : "") + day.day
+        let monthString = ((day.monthIndex < 9) ? "0" : "") + (day.monthIndex + 1);
+        while (actualTask < this.props.tasks.length && `${day.year}-${monthString}-${dayString}` === this.props.tasks[actualTask].duedate) {
+          day["taskList"].push(this.props.tasks[actualTask]);
+          actualTask++;
+        }
+      });
+    });
+    return weeks;
+  }
   getDayNames = () => this.getCalendar().dayNames;
   PrevMonth() {
     this.setState({

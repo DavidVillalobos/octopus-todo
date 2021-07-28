@@ -11,22 +11,15 @@ class Task extends Component {
           color: this.props.content.textColor
         }}>
           <Grid>
-            <Cell small={12} large={6}>
+            <Cell small={7} large={7}>
               <ArrowRightIcon className="navbar-icon" />
               Name: {this.props.content.name}
             </Cell>
-            <Cell small={12} large={6}>
+            <Cell small={5} large={5}>
               <ClockIcon className="navbar-icon" />
               {this.props.content.duedate}
             </Cell>
-            <Cell small={12} large={12}>
-              Description:
-              {this.props.content.description}
-            </Cell>
-            <Cell small={12} large={12}>
-              State (temp):
-              {this.props.content.state}
-            </Cell>
+
           </Grid>
         </div>
       </div >
