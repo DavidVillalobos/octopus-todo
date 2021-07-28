@@ -17,7 +17,7 @@ class Task extends Component {
             </Cell>
             <Cell small={5} large={5}>
               <ClockIcon className="navbar-icon" />
-              {this.props.content.duedate}
+              {this.props.content.dueDate}
             </Cell>
 
           </Grid>

@@ -21,7 +21,7 @@ class Calendar extends Component {
         day["taskList"] = [];
         let dayString = ((day.day < 10) ? "0" : "") + day.day
         let monthString = ((day.monthIndex < 9) ? "0" : "") + (day.monthIndex + 1);
-        while (actualTask < this.props.tasks.length && `${day.year}-${monthString}-${dayString}` === this.props.tasks[actualTask].duedate) {
+        while (actualTask < this.props.tasks.length && `${day.year}-${monthString}-${dayString}` === this.props.tasks[actualTask].dueDate) {
           day["taskList"].push(this.props.tasks[actualTask]);
           actualTask++;
         }
