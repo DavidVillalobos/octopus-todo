@@ -21,8 +21,15 @@ class Main extends Component {
       tasks: this.loadTasks(),
     };
     this.state.tasks.forEach(task => {
-      this.state.columns[0].tasks.push(task);
-      this.state.taskList[0].tasks.push(task);
+      if (0 <= task.state && task.state < this.state.tasks.length) {
+        this.state.columns[task.state].tasks.push(task);
+      }
+      if (0 <= task.taskList && task.taskList < this.state.taskList.length) {
+        this.state.taskList[task.taskList].tasks.push(task);
+      }
+      if (task.taskList !== 0) {
+        this.state.taskList[0].tasks.push(task);
+      }
     })
   }
 
@@ -36,22 +43,23 @@ class Main extends Component {
 
   loadTaskList() {
     return [
-      { listId: 0, name: "English", state: 0, bgColor: "red", textColor: "white", tasks: [] },
-      { listId: 0, name: "Math", state: 0, bgColor: "#1373aa", textColor: "white", tasks: [] },
-      { listId: 1, name: "Science", state: 0, bgColor: "green", textColor: "white", tasks: [] },
-      { listId: 2, name: "Social", state: 0, bgColor: "blue", textColor: "white", tasks: [] }
+      { listId: 0, name: "Tasks", state: 0, bgColor: "white", textColor: "black", tasks: [] },
+      { listId: 1, name: "English", state: 0, bgColor: "red", textColor: "white", tasks: [] },
+      { listId: 2, name: "Math", state: 0, bgColor: "#1373aa", textColor: "white", tasks: [] },
+      { listId: 3, name: "Science", state: 0, bgColor: "green", textColor: "white", tasks: [] },
+      { listId: 4, name: "Social", state: 0, bgColor: "blue", textColor: "white", tasks: [] }
     ];
   }
 
   loadTasks() {
     return [
-      { taskId: uuidv4(), name: "Eat", duedate: "2021-07-16", state: 1, tasklist: 0, bgColor: "green", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Study Science", duedate: "2021-07-21", state: 0, tasklist: 1, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Math task", duedate: "2021-07-22", state: 0, tasklist: 1, bgColor: "red", textColor: "white" }
+      { taskId: uuidv4(), name: "Eat", dueDate: "2021-07-16", state: 2, taskList: 0, bgColor: "green", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", dueDate: "2021-07-20", state: 2, taskList: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", dueDate: "2021-07-20", state: 2, taskList: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", dueDate: "2021-07-20", state: 2, taskList: -1, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", dueDate: "2021-07-20", state: 2, taskList: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Study Science", dueDate: "2021-07-21", state: 0, taskList: 1, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Math task", dueDate: "2021-07-22", state: 0, taskList: 1, bgColor: "red", textColor: "white" }
     ];
   }
 
