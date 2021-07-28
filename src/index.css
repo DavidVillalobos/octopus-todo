@@ -37,6 +37,20 @@ ul.header li a:hover{
   margin-right: 10px;
 }
 
+.add-icon{
+  height: 3em;
+}
+
+.button-create{
+  margin-top: -3px !important;
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+
+.button-create:hover{
+  background-color: rgb(55, 55, 55) !important;
+}
+
 .month-arrow-icon{
   height: 45px;
   margin-top: -5px;
@@ -189,7 +203,7 @@ ul.header li a:hover{
 }
 
 .panel-todo-list{
-  height: 400px;
+  height: 540px;
   padding: 15px;
   background-color: rgb(75, 75, 75);
   overflow-y: scroll !important;
@@ -219,6 +233,7 @@ textarea{
 
 .name-task-day{
   padding: 10px;
+  font-weight: bold;
   font-size: 1.3em !important;
 }
 
