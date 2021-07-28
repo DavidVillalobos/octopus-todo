@@ -6,6 +6,16 @@ import Task from "../DashBoard/Task";
 
 class ListTasks extends Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "",
+      description: "",
+      duedate: ""
+    };
+    this.createTask = this.createTask.bind(this)
+  }
+
   currentTaskList = this.props.taskList[0];
 
   handleClick(e) {
@@ -14,6 +24,10 @@ class ListTasks extends Component {
     } else if (e.type === 'contextmenu') {
       console.log('Right click');
     }
+  }
+
+  createTask() {
+    console.log(`name: ${this.state.name}, description: ${this.state.description}, duedate: ${this.state.duedate}`);
   }
 
   render() {
@@ -39,14 +53,14 @@ class ListTasks extends Component {
             <Cell className="panel-create-task">
               <Grid>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
-                  <input type="text" placeholder="Name" />
-                  <input type="date" placeholder="DueDate" />
+                  <input type="text" placeholder="name" onChange={(e) => this.setState({ name: e.target.value })} />
+                  <input type="date" placeholder="DueDate" onChange={(e) => this.setState({ duedate: e.target.value })} />
                 </Cell>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={5} large={5}>
-                  <textarea placeholder="Description" />
+                  <textarea placeholder="Description" onChange={(e) => this.setState({ description: e.target.value })} />
                 </Cell>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10} className="text-center">
-                  <Button className="button-create">
+                  <Button className="button-create" onClick={this.createTask}>
                     <PlusCircleIcon className="navbar-icon" />
                     Create task
                   </Button>
