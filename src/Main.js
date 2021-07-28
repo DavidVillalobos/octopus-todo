@@ -45,10 +45,13 @@ class Main extends Component {
 
   loadTasks() {
     return [
-      { taskId: uuidv4(), name: "Math task", duedate: "20/07/2021", state: 0, tasklist: 1, bgColor: "red", textColor: "white" },
-      { taskId: uuidv4(), name: "Study Science", duedate: "21/06/2021", state: 0, tasklist: 1, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Buy dinner", duedate: "22/08/2021", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
-      { taskId: uuidv4(), name: "Eat", duedate: "23/06/2021", state: 1, tasklist: 0, bgColor: "green", textColor: "white" },
+      { taskId: uuidv4(), name: "Eat", duedate: "2021-07-16", state: 1, tasklist: 0, bgColor: "green", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Buy dinner for me", duedate: "2021-07-20", state: 2, tasklist: 2, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Study Science", duedate: "2021-07-21", state: 0, tasklist: 1, bgColor: "#1373aa", textColor: "white" },
+      { taskId: uuidv4(), name: "Math task", duedate: "2021-07-22", state: 0, tasklist: 1, bgColor: "red", textColor: "white" }
     ];
   }
 
