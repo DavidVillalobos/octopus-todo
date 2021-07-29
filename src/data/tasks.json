@@ -1,0 +1,65 @@
+[
+    {
+        "taskId": "1",
+        "name": "Eat",
+        "dueDate": "2021-07-16",
+        "state": 2,
+        "taskList": 0,
+        "bgColor": "green",
+        "textColor": "white"
+    },
+    {
+        "taskId": "2",
+        "name": "Buy dinner for me",
+        "dueDate": "2021-07-20",
+        "state": 2,
+        "taskList": 2,
+        "bgColor": "#1373aa",
+        "textColor": "white"
+    },
+    {
+        "taskId": "3",
+        "name": "Buy dinner for me",
+        "dueDate": "2021-07-20",
+        "state": 2,
+        "taskList": 2,
+        "bgColor": "#1373aa",
+        "textColor": "white"
+    },
+    {
+        "taskId": "4",
+        "name": "Buy dinner for me",
+        "dueDate": "2021-07-20",
+        "state": 2,
+        "taskList": -1,
+        "bgColor": "#1373aa",
+        "textColor": "white"
+    },
+    {
+        "taskId": "5",
+        "name": "Buy dinner for me",
+        "dueDate": "2021-07-20",
+        "state": 2,
+        "taskList": 2,
+        "bgColor": "#1373aa",
+        "textColor": "white"
+    },
+    {
+        "taskId": "6",
+        "name": "Study Science",
+        "dueDate": "2021-07-21",
+        "state": 0,
+        "taskList": 1,
+        "bgColor": "#1373aa",
+        "textColor": "white"
+    },
+    {
+        "taskId": "7",
+        "name": "Math task",
+        "dueDate": "2021-07-22",
+        "state": 0,
+        "taskList": 1,
+        "bgColor": "red",
+        "textColor": "white"
+    }
+]

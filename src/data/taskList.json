@@ -1,0 +1,42 @@
+[
+    {
+        "listId": 0,
+        "name": "Tasks",
+        "state": 0,
+        "bgColor": "white",
+        "textColor": "black",
+        "tasks": []
+    },
+    {
+        "listId": 1,
+        "name": "English",
+        "state": 0,
+        "bgColor": "red",
+        "textColor": "white",
+        "tasks": []
+    },
+    {
+        "listId": 2,
+        "name": "Math",
+        "state": 0,
+        "bgColor": "#1373aa",
+        "textColor": "white",
+        "tasks": []
+    },
+    {
+        "listId": 3,
+        "name": "Science",
+        "state": 0,
+        "bgColor": "green",
+        "textColor": "white",
+        "tasks": []
+    },
+    {
+        "listId": 4,
+        "name": "Social",
+        "state": 0,
+        "bgColor": "blue",
+        "textColor": "white",
+        "tasks": []
+    }
+]

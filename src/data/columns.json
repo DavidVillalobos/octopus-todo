@@ -1,0 +1,17 @@
+[
+    {
+        "columnId": 0,
+        "name": "To do",
+        "tasks": []
+    },
+    {
+        "columnId": 1,
+        "name": "Progress",
+        "tasks": []
+    },
+    {
+        "columnId": 2,
+        "name": "Done",
+        "tasks": []
+    }
+]
