@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { v4 as uuidv4 } from 'uuid'
 import { Grid, Cell, Menu, Button, Label } from 'react-foundation';
 import { PlusCircleIcon, CollectionIcon } from '@heroicons/react/solid'
 import Task from "../DashBoard/Task";
+//import { v4 as uuidv4 } from 'uuid'
 
 class ListTasks extends Component {
 
@@ -41,7 +41,7 @@ class ListTasks extends Component {
             {this.props.taskList.slice(1).map((list) => {
               return (
                 <Button
-                  key={uuidv4()}
+                  key={list.listId}
                   onClick={() => this.setState({ currentTaskList: this.props.taskList[list.listId] })}
                   style={{ background: list.bgColor, color: list.textColor }}>
                   {list.name}
@@ -79,7 +79,7 @@ class ListTasks extends Component {
               <Grid>
                 {this.state.currentTaskList.tasks.map((task) => {
                   return (
-                    <Cell key={uuidv4()} offsetOnLarge={1} offsetOnSmall={1} small={10} large={10}>
+                    <Cell key={task.taskId} offsetOnLarge={1} offsetOnSmall={1} small={10} large={10}>
                       <Task content={task} />
                     </Cell>
                   )

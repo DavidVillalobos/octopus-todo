@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Grid, Cell } from 'react-foundation';
 import HeaderMonth from './HeaderMonth';
 import Week from './Week';
-import { v4 as uuidv4 } from 'uuid'
 import { JsonCalendar } from 'json-calendar';
 
 class Calendar extends Component {
@@ -53,8 +52,8 @@ class Calendar extends Component {
           />
         </Cell>
         <Cell small={12} large={12}>
-          {this.getWeeks().map(week => (
-            <div key={uuidv4()}>
+          {this.getWeeks().map((week, index) => (
+            <div key={index}>
               <Week days={week} month={this.actual.getMonth()} />
             </div>
           ))}
