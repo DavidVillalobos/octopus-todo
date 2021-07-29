@@ -18,11 +18,23 @@ class Calendar extends Component {
     weeks.forEach(week => {
       week.forEach(day => {
         day["taskList"] = [];
-        let dayString = ((day.day < 10) ? "0" : "") + day.day
-        let monthString = ((day.monthIndex < 9) ? "0" : "") + (day.monthIndex + 1);
-        while (actualTask < this.props.tasks.length && `${day.year}-${monthString}-${dayString}` === this.props.tasks[actualTask].dueDate) {
-          day["taskList"].push(this.props.tasks[actualTask]);
-          actualTask++;
+        if (actualTask < this.props.tasks.length) {
+          let dayString = ((day.day < 10) ? "0" : "") + day.day
+          let monthString = ((day.monthIndex + 1 < 10) ? "0" : "") + (day.monthIndex + 1);
+          let date = `${day.year}-${monthString}-${dayString}`;
+          let dueDate = this.props.tasks[actualTask].dueDate;
+          //console.log(`${date}  VS ${dueDate}`)
+          if (date > dueDate) {
+            actualTask++;
+          } else if (date === dueDate) {
+            while (actualTask < this.props.tasks.length && date === dueDate) {
+              day["taskList"].push(this.props.tasks[actualTask]);
+              actualTask++;
+              if (actualTask < this.props.tasks.length) {
+                dueDate = this.props.tasks[actualTask].dueDate;
+              }
+            }
+          }
         }
       });
     });

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Grid, Cell, Menu, Button, Label } from 'react-foundation';
 import { PlusCircleIcon, CollectionIcon } from '@heroicons/react/solid'
 import Task from "../DashBoard/Task";
-//import { v4 as uuidv4 } from 'uuid'
+import { v4 as uuidv4 } from 'uuid'
 
 class ListTasks extends Component {
 
@@ -11,7 +11,7 @@ class ListTasks extends Component {
     this.state = {
       currentTaskList: this.props.taskList[0],
       name: "",
-      duedate: ""
+      dueDate: ""
     };
     this.createTask = this.createTask.bind(this)
   }
@@ -26,7 +26,22 @@ class ListTasks extends Component {
   }*/
 
   createTask() {
-    console.log(`name: ${this.state.name}, duedate: ${this.state.duedate} in list ${this.state.currentTaskList.name}`);
+    if (this.state.name !== '') {
+      this.props.createTask({
+        taskId: uuidv4(),
+        name: this.state.name,
+        dueDate: this.state.dueDate,
+        state: 0,
+        taskList: this.state.currentTaskList.listId,
+        bgColor: this.state.currentTaskList.bgColor,
+        textColor: this.state.currentTaskList.textColor
+      });
+      this.setState({ dueDate: "", name: "" });
+    }
+  }
+
+  createTaskList() {
+    this.props.createTaskList({ name: 'TASKLIST' })
   }
 
   render() {
@@ -58,10 +73,10 @@ class ListTasks extends Component {
             <Cell className="panel-create-task">
               <Grid>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
-                  <input type="text" placeholder="name" onChange={(e) => this.setState({ name: e.target.value })} />
+                  <input type="text" placeholder="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
                 </Cell>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
-                  <input type="date" placeholder="DueDate" onChange={(e) => this.setState({ duedate: e.target.value })} />
+                  <input type="date" placeholder="dueDate" value={this.state.dueDate} onChange={(e) => this.setState({ dueDate: e.target.value })} />
                 </Cell>
                 <Cell small={2} large={2} className="text-center">
                   <Button className="button-create" onClick={this.createTask}>

@@ -24,6 +24,8 @@ class Main extends Component {
       taskList: JSON.parse(fs.readFileSync(relative_path + 'taskList.json')),
       tasks: JSON.parse(fs.readFileSync(relative_path + 'tasks.json')),
     };
+    this.createTask = this.createTask.bind(this)
+    this.createTaskList = this.createTaskList.bind(this)
     this.state.tasks.forEach(task => {
       if (0 <= task.state && task.state < this.state.tasks.length) {
         this.state.columns[task.state].tasks.push(task);
@@ -77,6 +79,33 @@ class Main extends Component {
     }
   };
 
+  createTask(task) {
+    this.state.columns[0].tasks.push(task);
+    if (task.taskList !== 0) {
+      this.state.taskList[0].tasks.push(task);
+    }
+    this.state.taskList[task.taskList].tasks.push(task);
+    this.state.tasks.push(task);
+    this.state.tasks.sort((a, b) => ((a.dueDate > b.dueDate) ? 1 : ((a.dueDate < b.dueDate) ? -1 : 0)));
+    this.commitTasks();
+  }
+
+  createTaskList(taskList) {
+    this.state.taskList.push(taskList);
+    this.commitTaskList();
+  }
+
+  commitTasks() {
+    fs.writeFileSync(relative_path + 'tasks.json', JSON.stringify(this.state.tasks), 'UTF-8');
+    this.setState({}); // re-render
+  }
+
+  commitTaskList() {
+    fs.writeFileSync(relative_path + 'taskList.json', JSON.stringify(this.state.taskList), 'UTF-8');
+    this.setState({}); // re-render
+  }
+
+
   render() {
     return (
       <HashRouter>
@@ -108,7 +137,7 @@ class Main extends Component {
         </ul>
         <div className='content'>
           <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} />)} />
-          <Route path='/tasks' render={(props) => (<ListTasks {...props} taskList={this.state.taskList} />)} />
+          <Route path='/tasks' render={(props) => (<ListTasks {...props} taskList={this.state.taskList} createTask={this.createTask} createTaskList={this.createTaskList} />)} />
           <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd} />)} />
           <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks} />)} />
         </div>
