@@ -3,8 +3,8 @@
         "listId": 0,
         "name": "Tasks",
         "state": 0,
-        "bgColor": "white",
-        "textColor": "black",
+        "bgColor": "#1373aa",
+        "textColor": "white",
         "tasks": []
     },
     {
