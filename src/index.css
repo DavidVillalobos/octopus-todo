@@ -275,3 +275,10 @@ input[type="color"]:focus, input[type="color"]:active {
   margin-right: 10px;
 }
 
+.cant-main-task{
+  font-size: 30px !important;
+  background-color: rgb(75, 75, 75) !important;
+  margin-top: -8px !important;
+  margin-right: 10px;
+}
+
