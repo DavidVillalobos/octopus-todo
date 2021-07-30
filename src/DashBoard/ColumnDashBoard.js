@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { Badge } from "react-foundation";
-import Task from "./Task"
+import Task from "../Task"
 
 class ColumnDashBoard extends Component {
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Grid, Cell, Menu, Button, Label } from 'react-foundation';
 import { PlusCircleIcon, CollectionIcon } from '@heroicons/react/solid'
-import Task from "../DashBoard/Task";
+import Task from "../Task";
 import { v4 as uuidv4 } from 'uuid'
 
 class ListTasks extends Component {

@@ -1,13 +1,19 @@
 import React, { Component } from "react";
 import { Grid, Cell } from 'react-foundation';
-import Task from "../DashBoard/Task";
+import Task from "../Task";
+
+const fs = window.require('fs');
+
+let relative_path = './src/data/';
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mainTasks: this.props.tasks.filter(task => task.state < 2)
+      columns: JSON.parse(fs.readFileSync(relative_path + 'columns.json')),
+      mainTasks: []
     };
+    this.state.mainTasks = this.props.tasks.filter(task => task.state < this.state.columns.length - 1).slice(0, 5)
   }
 
   render() {

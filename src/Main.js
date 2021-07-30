@@ -43,6 +43,7 @@ class Main extends Component {
     window.scrollTo(0, 0);
     if (!result.destination) return;
     const { source, destination } = result;
+    let newState = {};
     if (source.droppableId !== destination.droppableId) { // CHANGE STATE
       const sourceColumn = this.state.columns[source.droppableId];
       const destColumn = this.state.columns[destination.droppableId];
@@ -51,7 +52,7 @@ class Main extends Component {
       const [itemMove] = sourceItems.splice(source.index, 1);
       itemMove.state = destColumn.columnId;
       destItems.splice(destination.index, 0, itemMove);
-      let newState = {
+      newState = {
         ...this.state.columns,
         [source.droppableId]: {
           ...sourceColumn,
@@ -62,21 +63,21 @@ class Main extends Component {
           tasks: destItems
         }
       };
-      this.setState({ columns: newState });
     } else { // REORDER
       const column = this.state.columns[source.droppableId];
       const copiedItems = [...column.tasks];
       const [itemMove] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, itemMove);
-      let newState = {
+      newState = {
         ...this.state.columns,
         [source.droppableId]: {
           ...column,
           tasks: copiedItems
         }
       };
-      this.setState({ columns: newState });
     }
+    this.setState({ columns: newState });
+    this.commitTasks();
   };
 
   createTask(task) {
@@ -104,7 +105,6 @@ class Main extends Component {
     fs.writeFileSync(relative_path + 'taskList.json', JSON.stringify(this.state.taskList), 'UTF-8');
     this.setState({}); // re-render
   }
-
 
   render() {
     return (
