@@ -1,6 +1,6 @@
 const path = require("path");
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcRenderer, remote } = require("electron");
 const isDev = require("electron-is-dev");
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -12,8 +12,10 @@ function createWindow() {
     height: 600,
     minHeight: 600,
     minWidth: 600,
+    autoHideMenuBar: true,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      contextIsolation: false
     }
   });
 

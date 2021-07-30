@@ -1,0 +1,20 @@
+[
+    {
+        "columnId": 0,
+        "name": "To do",
+        "tasks": [],
+        "finalColumn": false
+    },
+    {
+        "columnId": 1,
+        "name": "Progress",
+        "tasks": [],
+        "finalColumn": false
+    },
+    {
+        "columnId": 2,
+        "name": "Done",
+        "tasks": [],
+        "finalColumn": true
+    }
+]

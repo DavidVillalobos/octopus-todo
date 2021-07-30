@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { ChevronLeftIcon, ChevronRightIcon, CalendarIcon } from '@heroicons/react/solid'
-import { v4 as uuidv4 } from 'uuid'
 
 class HeaderMonth extends Component {
   render() {
@@ -22,8 +21,8 @@ class HeaderMonth extends Component {
             </div>
           </div>
           <div className="header-month-card">
-            {this.props.DayNames.map(day => (
-              <div key={uuidv4()} className="card">
+            {this.props.DayNames.map((day, index) => (
+              <div key={index} className="card">
                 <div className="card-section name-day-week text-center">
                   {day.name}
                 </div>

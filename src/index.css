@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #1373aa !important;
+  background-color: rgb(41, 41, 41) !important;
   overflow: hidden;
 }
 
@@ -37,6 +37,20 @@ ul.header li a:hover{
   margin-right: 10px;
 }
 
+.add-icon{
+  height: 3em;
+}
+
+.button-create{
+  margin-top: -3px !important;
+  background-color: transparent !important;
+  padding: 0px !important;
+}
+
+.button-create:hover{
+  background-color: rgb(55, 55, 55) !important;
+}
+
 .month-arrow-icon{
   height: 45px;
   margin-top: -5px;
@@ -58,12 +72,16 @@ ul.header li a:hover{
   font-size: 1.3em;
 }
 
-.gray{
+.day-out-month{
   background-color: rgb(55, 55, 55) !important;
 }
 
-.white{
-  background-color: rgb(95, 95, 95);
+.day-in-month{
+  background-color: rgb(85, 85, 85);
+}
+
+.day-busy{
+  background-color: rgb(161, 57, 57);
 }
 
 .day{
@@ -83,16 +101,15 @@ ul.header li a:hover{
 
 .name-day-week{
   color: white !important;
-  background-color: rgb(65, 65, 65) !important;
   font-size: 1em !important;
   font-weight: bold;
-  text-shadow: 1px 1px 0px #555 !important;
+  background-color: rgb(50, 50, 50) !important;
 }
 
 .name-month{
   display: flex;
-  justify-content: center;
   background-color: rgb(50, 50, 50) !important;
+  justify-content: center;
   color: white !important;
   font-size: 2em;
   margin-bottom: -25px;
@@ -153,6 +170,7 @@ ul.header li a:hover{
   height: 592px;
   padding: 15px;
   background-color: rgb(75, 75, 75);
+  overflow-y: scroll;
 }
 
 .dashboard-column {
@@ -185,10 +203,10 @@ ul.header li a:hover{
 }
 
 .panel-todo-list{
-  height: 592px;
+  height: 489px;
   padding: 15px;
   background-color: rgb(75, 75, 75);
-  overflow-y: scroll;
+  overflow-y: scroll !important;
 }
 
 .panel-create-task{
@@ -198,10 +216,6 @@ ul.header li a:hover{
 
 textarea{
   height: 95px !important;
-}
-
-.button-create{
-  min-width: 367px;
 }
 
 .task-day-panel{
@@ -219,7 +233,8 @@ textarea{
 
 .name-task-day{
   padding: 10px;
-  font-size: 1.4em !important;
+  font-weight: bold;
+  font-size: 1.3em !important;
 }
 
 .number-day{
@@ -228,9 +243,42 @@ textarea{
   font-weight: bold;
   min-width: 40px;
   background-color: rgb(65, 65, 65) !important;
-  text-shadow: 1px 1px 0px #555 !important;
 }
 
-.aja{
+.block-day{
   border: 1.3px solid rgb(50, 50, 50) !important;
 }
+
+input[type="color"] {
+	-webkit-appearance: none;
+  border-radius: 100%;
+	width: 40px;
+	height: 40px;
+  margin-top: -7px !important;
+  background-color: transparent;
+  box-shadow: none !important;
+}
+input[type="color"]::-webkit-color-swatch-wrapper, input[type="color"]::-webkit-color-swatch{
+  border: none;
+  padding: 0;
+}
+input[type="color"]:focus, input[type="color"]:active {
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+.cant-task-column{
+  font-size: 20px !important;
+  background-color: rgb(75, 75, 75) !important;
+  margin-top: -8px !important;
+  margin-right: 10px;
+}
+
+.cant-main-task{
+  font-size: 30px !important;
+  background-color: rgb(75, 75, 75) !important;
+  margin-top: -8px !important;
+  margin-right: 10px;
+}
+
