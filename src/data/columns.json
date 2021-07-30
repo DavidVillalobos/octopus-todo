@@ -2,16 +2,19 @@
     {
         "columnId": 0,
         "name": "To do",
-        "tasks": []
+        "tasks": [],
+        "finalColumn": false
     },
     {
         "columnId": 1,
         "name": "Progress",
-        "tasks": []
+        "tasks": [],
+        "finalColumn": false
     },
     {
         "columnId": 2,
         "name": "Done",
-        "tasks": []
+        "tasks": [],
+        "finalColumn": true
     }
 ]

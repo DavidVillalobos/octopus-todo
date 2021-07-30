@@ -1,27 +1,32 @@
 import React, { Component } from "react";
-import { Grid, Cell } from 'react-foundation';
+import { Grid, Cell, Badge, Label, Colors } from 'react-foundation';
 import Task from "../Task";
-
-const fs = window.require('fs');
-
-let relative_path = './src/data/';
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      columns: JSON.parse(fs.readFileSync(relative_path + 'columns.json')),
       mainTasks: []
     };
-    this.state.mainTasks = this.props.tasks.filter(task => task.state < this.state.columns.length - 1).slice(0, 5)
+    this.state.mainTasks = this.props.tasks.filter(task => !task.completed).slice(0, 5)
   }
 
   render() {
     return (
       <div className="home-task">
         <Grid style={{ userSelect: "none" }}>
-          <Cell large={12}>
-            WELCOME TO MAIN PAGE OF OCTOPUS TODO
+          <Cell large={12} className="text-center">
+            <Label style={{ fontSize: 30 }} color={Colors.SECONDARY}>
+              Octopus TODO
+            </Label>
+          </Cell>
+          <Cell large={12} style={{ marginBottom: 10 }}>
+            <Label style={{ fontSize: 30 }} color={Colors.PRIMARY}>
+              Main Tasks:
+              <Badge style={{ fontSize: 25 }} color={Colors.PRIMARY}>
+                {this.state.mainTasks.length}
+              </Badge>
+            </Label>
           </Cell>
           <Cell offsetOnSmall={1} offsetOnLarge={1} large={10} small={10}>
             {
@@ -31,7 +36,7 @@ class Home extends Component {
             }
           </Cell>
         </Grid>
-      </div>
+      </div >
     );
   }
 }

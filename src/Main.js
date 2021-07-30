@@ -26,8 +26,9 @@ class Main extends Component {
     };
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
+    this.onDragEnd = this.onDragEnd.bind(this)
     this.state.tasks.forEach(task => {
-      if (0 <= task.state && task.state < this.state.tasks.length) {
+      if (0 <= task.state && task.state < this.state.columns.length) {
         this.state.columns[task.state].tasks.push(task);
       }
       if (0 <= task.taskList && task.taskList < this.state.taskList.length) {
@@ -39,7 +40,7 @@ class Main extends Component {
     })
   }
 
-  onDragEnd = (result) => {
+  onDragEnd(result) {
     window.scrollTo(0, 0);
     if (!result.destination) return;
     const { source, destination } = result;
@@ -50,7 +51,10 @@ class Main extends Component {
       const sourceItems = [...sourceColumn.tasks];
       const destItems = [...destColumn.tasks];
       const [itemMove] = sourceItems.splice(source.index, 1);
+
       itemMove.state = destColumn.columnId;
+      itemMove.nameState = destColumn.name;
+      itemMove.completed = destColumn.finalColumn;
       destItems.splice(destination.index, 0, itemMove);
       newState = {
         ...this.state.columns,
@@ -81,6 +85,7 @@ class Main extends Component {
   };
 
   createTask(task) {
+    task.stateName = this.state.columns[0].name;
     this.state.columns[0].tasks.push(task);
     if (task.taskList !== 0) {
       this.state.taskList[0].tasks.push(task);

@@ -32,7 +32,10 @@ class ListTasks extends Component {
         name: this.state.name,
         dueDate: this.state.dueDate,
         state: 0,
+        nameState: '',
+        completed: false,
         taskList: this.state.currentTaskList.listId,
+        nameTaskList: this.state.currentTaskList.name,
         bgColor: this.state.currentTaskList.bgColor,
         textColor: this.state.currentTaskList.textColor
       });
