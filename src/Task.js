@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Grid, Cell } from 'react-foundation';
-import { ClockIcon, CheckIcon, ViewBoardsIcon } from '@heroicons/react/solid'
+import { ClockIcon, CheckIcon, ChartSquareBarIcon, ViewListIcon, MinusIcon } from '@heroicons/react/solid'
 
 class Task extends Component {
   render() {
+    let icon = (this.props.content.completed) ? <CheckIcon className="navbar-icon" /> : <MinusIcon className="navbar-icon" />;
     return (
       <div className="card card-task">
         <div className="card-section" style={{
@@ -11,17 +12,21 @@ class Task extends Component {
           color: this.props.content.textColor
         }}>
           <Grid>
-            <Cell small={12} large={12}>
-              <CheckIcon className="navbar-icon" />
+            <Cell small={8} large={8}>
+              {icon}
               {this.props.content.name}
             </Cell>
-            <Cell small={5} large={5}>
+            <Cell small={4} large={4}>
               <ClockIcon className="navbar-icon" />
               {this.props.content.dueDate}
             </Cell>
-            <Cell offsetOnSmall={2} offsetOnLarge={2} small={5} large={5}>
-              <ViewBoardsIcon className="navbar-icon" />
-              {this.props.content.state}
+            <Cell small={8} large={8}>
+              <ViewListIcon className="navbar-icon" />
+              {this.props.content.nameTaskList}
+            </Cell>
+            <Cell small={4} large={4}>
+              <ChartSquareBarIcon className="navbar-icon" />
+              {this.props.content.nameState}
             </Cell>
 
           </Grid>
