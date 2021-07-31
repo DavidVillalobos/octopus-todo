@@ -85,8 +85,8 @@ ul.header li a:hover{
 }
 
 .day{
-  height: 81px;
-  width: 81px;
+  height: 74px;
+  width: 74px;
 }
 
 .week{
@@ -224,17 +224,24 @@ textarea{
 }
 
 .task-list-day{
-  margin: 5px;
-  margin-bottom: 7px;
+  margin: 1px;
+  margin-left: 5px;
   width: 45px;
   height: 45px;
   box-shadow: 2px 2px 2px rgb(50, 50, 50) !important;
 }
 
 .name-task-day{
-  padding: 10px;
   font-weight: bold;
   font-size: 1.3em !important;
+  text-align: center !important;
+  margin-top: 5px;
+  margin-bottom: -5px;
+}
+
+.taskDay-icon{
+  margin-top: -3px;
+  height: 20px;
 }
 
 .number-day{
