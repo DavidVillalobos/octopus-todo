@@ -20,9 +20,9 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      columns: JSON.parse(fs.readFileSync(relative_path + 'columns.json')),
-      taskList: JSON.parse(fs.readFileSync(relative_path + 'taskList.json')),
-      tasks: JSON.parse(fs.readFileSync(relative_path + 'tasks.json')),
+      columns: this.readJsonArray(relative_path + 'columns.json'),
+      taskList: this.readJsonArray(relative_path + 'taskList.json'),
+      tasks: this.readJsonArray(relative_path + 'tasks.json'),
     };
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
@@ -31,14 +31,21 @@ class Main extends Component {
       if (0 <= task.state && task.state < this.state.columns.length) {
         this.state.columns[task.state].tasks.push(task);
       }
-      if (0 <= task.taskList && task.taskList < this.state.taskList.length) {
-        this.state.taskList[task.taskList].tasks.push(task);
-      }
-      if (task.taskList !== 0) {
-        this.state.taskList[0].tasks.push(task);
+      if (task.taskList !== '1') { // HOME TASKS
+        this.state.taskList.find(list => list.listId === task.taskList).tasks.push(task);
       }
     })
   }
+
+  readJsonArray(path) {
+    try {
+      return JSON.parse(fs.readFileSync(path, 'UTF-8'));
+    } catch {
+      console.log(`Error: file ${path} not found`);
+      return [];
+    }
+  }
+
 
   onDragEnd(result) {
     window.scrollTo(0, 0);
@@ -81,34 +88,35 @@ class Main extends Component {
       };
     }
     this.setState({ columns: newState });
-    this.commitTasks();
+    this.commit(relative_path + 'tasks.json', this.state.tasks);
   };
 
   createTask(task) {
-    task.stateName = this.state.columns[0].name;
+    task.nameState = this.state.columns[0].name;
     this.state.columns[0].tasks.push(task);
-    if (task.taskList !== 0) {
-      this.state.taskList[0].tasks.push(task);
-    }
-    this.state.taskList[task.taskList].tasks.push(task);
     this.state.tasks.push(task);
+    if (task.taskList !== '1') { // HOME TASKS
+      this.state.taskList.find(list => list.listId === task.taskList).tasks.push(task);
+    }
     this.state.tasks.sort((a, b) => ((a.dueDate > b.dueDate) ? 1 : ((a.dueDate < b.dueDate) ? -1 : 0)));
-    this.commitTasks();
+    this.commit(relative_path + 'tasks.json', this.state.tasks);
   }
 
   createTaskList(taskList) {
     this.state.taskList.push(taskList);
-    this.commitTaskList();
+    this.commit(relative_path + 'taskList.json',
+      this.state.taskList.map(list => {
+        return {
+          'listId': list.listId, 'name': list.name,
+          'bgColor': list.bgColor, 'textColor': list.textColor, 'tasks': []
+        };
+      })
+    );
   }
 
-  commitTasks() {
-    fs.writeFileSync(relative_path + 'tasks.json', JSON.stringify(this.state.tasks), 'UTF-8');
-    this.setState({}); // re-render
-  }
-
-  commitTaskList() {
-    fs.writeFileSync(relative_path + 'taskList.json', JSON.stringify(this.state.taskList), 'UTF-8');
-    this.setState({}); // re-render
+  commit(path, data) {
+    fs.writeFileSync(path, JSON.stringify(data), 'UTF-8');
+    this.setState({});
   }
 
   render() {
@@ -142,7 +150,7 @@ class Main extends Component {
         </ul>
         <div className='content'>
           <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} />)} />
-          <Route path='/tasks' render={(props) => (<ListTasks {...props} taskList={this.state.taskList} createTask={this.createTask} createTaskList={this.createTaskList} />)} />
+          <Route path='/tasks' render={(props) => (<ListTasks {...props} tasks={this.state.tasks} taskList={this.state.taskList} createTask={this.createTask} createTaskList={this.createTaskList} />)} />
           <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd} />)} />
           <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks} />)} />
         </div>
