@@ -1,13 +1,27 @@
 import React, { Component } from "react";
-import { Grid, Cell, Badge, Label, Colors } from 'react-foundation';
+import { Grid, Cell, Badge, Label } from 'react-foundation';
 import Task from "../Task";
 
 class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mainTasks: this.props.tasks.filter(task => !task.completed).slice(0, 5)
+      mainTasks: this.props.tasks.filter(task => !task.completed && this.formatDate(this.props.today) <= task.dueDate).slice(0, 5)
     };
+  }
+
+  formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
   }
 
   render() {
@@ -15,14 +29,14 @@ class Home extends Component {
       <div className="home-task">
         <Grid style={{ userSelect: "none" }}>
           <Cell large={12} className="text-center">
-            <Label style={{ fontSize: 30 }} color={Colors.SECONDARY}>
-              Octopus TODO
+            <Label style={{ fontSize: 30, background: "transparent" }}>
+              Octopus Todo
             </Label>
           </Cell>
           <Cell large={12} style={{ marginBottom: 10 }}>
-            <Label style={{ fontSize: 30 }} color={Colors.INFO}>
-              Main Tasks:
-              <Badge style={{ fontSize: 25 }} color={Colors.INFO}>
+            <Label style={{ fontSize: 20, background: "transparent" }} >
+              Main tasks:
+              <Badge style={{ fontSize: 25, background: "transparent" }} >
                 {this.state.mainTasks.length}
               </Badge>
             </Label>
