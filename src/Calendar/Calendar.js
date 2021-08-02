@@ -10,6 +10,7 @@ class Calendar extends Component {
     this.PrevMonth = this.PrevMonth.bind(this)
     this.NextMonth = this.NextMonth.bind(this)
     this.actual = new Date();
+    this.today = new Date();
   }
   getCalendar = () => new JsonCalendar({ today: this.actual, languageCode: 'en' })
   getWeeks() {
@@ -66,7 +67,7 @@ class Calendar extends Component {
         <Cell small={12} large={12}>
           {this.getWeeks().map((week, index) => (
             <div key={index}>
-              <Week days={week} month={this.actual.getMonth()} />
+              <Week days={week} month={this.actual.getMonth()} today={this.today} />
             </div>
           ))}
         </Cell>

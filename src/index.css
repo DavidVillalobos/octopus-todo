@@ -37,6 +37,18 @@ ul.header li a:hover{
   margin-right: 10px;
 }
 
+.reveal-icon{
+  height: 35px;
+  width: 35px;
+  margin-top: 10px;
+  color: white;
+}
+
+.btn:hover{
+  cursor: pointer;
+  color: rgb(75, 75, 75);
+}
+
 .add-icon{
   height: 3em;
 }
@@ -73,15 +85,15 @@ ul.header li a:hover{
 }
 
 .day-out-month{
-  background-color: rgb(55, 55, 55) !important;
+  background-color: rgb(55, 55, 55);
 }
 
 .day-in-month{
   background-color: rgb(85, 85, 85);
 }
 
-.day-busy{
-  background-color: rgb(161, 57, 57);
+.day-actual{
+  background-color: #1373aa !important;
 }
 
 .day{
@@ -160,6 +172,7 @@ ul.header li a:hover{
   padding: 15px;
   background-color: rgb(55, 55, 55);
   overflow-y: scroll;
+  padding-bottom: 40px;
 }
 
 .tasks-section{
@@ -249,7 +262,7 @@ textarea{
   color: white !important;
   font-weight: bold;
   min-width: 40px;
-  background-color: rgb(65, 65, 65) !important;
+  background-color: rgb(65, 65, 65);
 }
 
 .block-day{
@@ -259,16 +272,17 @@ textarea{
 input[type="color"] {
 	-webkit-appearance: none;
   border-radius: 100%;
-	width: 40px;
-	height: 40px;
-  margin-top: -7px !important;
+	height: 55px;
+	width: 100%;
   background-color: transparent;
   box-shadow: none !important;
 }
+
 input[type="color"]::-webkit-color-swatch-wrapper, input[type="color"]::-webkit-color-swatch{
   border: none;
   padding: 0;
 }
+
 input[type="color"]:focus, input[type="color"]:active {
   border: none;
   box-shadow: none;
@@ -277,8 +291,7 @@ input[type="color"]:focus, input[type="color"]:active {
 
 .cant-task-column{
   font-size: 20px !important;
-  background-color: rgb(75, 75, 75) !important;
-  margin-top: -8px !important;
+  margin-top: -8px ;
   margin-right: 10px;
 }
 
@@ -289,3 +302,6 @@ input[type="color"]:focus, input[type="color"]:active {
   margin-right: 10px;
 }
 
+.reveal-task-list{
+  background-color: rgb(55, 55, 55) !important;
+}
