@@ -4,13 +4,14 @@ import TaskDay from "./TaskDay";
 
 class Day extends Component {
   render() {
-    let style = (this.props.month === this.props.day.monthIndex ? "day-in-month" : "day-out-month");
+    let inMonth = (this.props.month === this.props.day.monthIndex) ? "day-in-month" : "day-out-month";
+    let forToday = (this.props.today.getDate() === this.props.day.day && this.props.today.getMonth() === this.props.day.monthIndex) ? "day-actual" : "";
     return (
       <div className="card day">
-        <div className={style}>
+        <div className={inMonth}>
           <Grid className="block-day">
-            <Cell className="text-center">
-              <div className="number-day">
+            <Cell className="text-center ">
+              <div className={"number-day " + forToday}>
                 {this.props.day.day}
               </div>
             </Cell>

@@ -263,6 +263,7 @@ textarea{
   font-weight: bold;
   min-width: 40px;
   background-color: rgb(65, 65, 65);
+  box-shadow: 3px 3px 3px rgb(50, 50, 50) !important;
 }
 
 .block-day{

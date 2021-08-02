@@ -6,7 +6,7 @@ class Week extends Component {
     return (
       <div className="week">
         {this.props.days.map(day => (
-          <Day key={day.id} day={day} month={this.props.month} />
+          <Day key={day.id} day={day} month={this.props.month} today={this.props.today} />
         ))}
       </div>
 
