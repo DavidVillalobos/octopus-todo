@@ -97,8 +97,8 @@ ul.header li a:hover{
 }
 
 .day{
-  height: 74px;
   width: 74px;
+  height: 74px;
 }
 
 .week{
@@ -143,7 +143,7 @@ ul.header li a:hover{
 }
 
 .content-section{
-  height: 530px;
+  height: 490px;
   overflow-y: scroll;
   background-color: rgb(75, 75, 75);
 }
@@ -171,7 +171,7 @@ ul.header li a:hover{
   height: 592px;
   padding: 15px;
   background-color: rgb(55, 55, 55);
-  overflow-y: scroll;
+  overflow-y: auto;
   padding-bottom: 40px;
 }
 
@@ -183,7 +183,7 @@ ul.header li a:hover{
   height: 592px;
   padding: 15px;
   background-color: rgb(75, 75, 75);
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .dashboard-column {
@@ -206,7 +206,7 @@ ul.header li a:hover{
   height: 40px;
   margin-bottom: 10px !important;
   border-radius: 5px !important;
-  font-size: 1em;
+  font-size: 0.9em;
 }
 
 .add-list-icon{
@@ -219,7 +219,7 @@ ul.header li a:hover{
   height: 489px;
   padding: 15px;
   background-color: rgb(75, 75, 75);
-  overflow-y: scroll !important;
+  overflow-y: auto !important;
 }
 
 .panel-create-task{
@@ -250,6 +250,11 @@ textarea{
   text-align: center !important;
   margin-top: 5px;
   margin-bottom: -5px;
+}
+
+.scroll{
+  height: 460px;
+  overflow-y: auto;
 }
 
 .taskDay-icon{
@@ -292,12 +297,13 @@ input[type="color"]:focus, input[type="color"]:active {
 
 .cant-task-column{
   font-size: 20px !important;
+  background-color: #1373aa !important;
   margin-top: -8px ;
   margin-right: 10px;
 }
 
 .cant-main-task{
-  font-size: 30px !important;
+  font-size: 20px !important;
   background-color: rgb(75, 75, 75) !important;
   margin-top: -8px !important;
   margin-right: 10px;

@@ -19,6 +19,7 @@ class ListTasks extends Component {
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
   }
+
   getHomeTasks() { return { "listId": "1", "name": "Tasks", "bgColor": "#1373aa", "textColor": "white", "tasks": this.props.tasks } };
 
 
@@ -58,7 +59,7 @@ class ListTasks extends Component {
         textColor: this.invertColor(this.state.color, true),
         tasks: []
       });
-      this.setState({ reveal: "none" });
+      this.setState({ reveal: "none", nameTaskList: "", color: "#1373aa" });
     }
   }
 
@@ -106,7 +107,7 @@ class ListTasks extends Component {
           <Menu isVertical className="todo-lists">
             <Button onClick={() => this.setState({ currentTaskList: this.getHomeTasks() })} onContextMenu={this.handleClick}>
               <CollectionIcon className="navbar-icon" />
-              Tasks
+              {this.getHomeTasks().tasks.length + " Tasks"}
             </Button>
             {this.props.taskList.map((list) => {
               return (
@@ -114,7 +115,7 @@ class ListTasks extends Component {
                   key={list.listId}
                   onClick={() => this.setState({ currentTaskList: this.props.taskList.find(taskList => taskList.listId === list.listId) })}
                   style={{ background: list.bgColor, color: list.textColor }}>
-                  {list.name}
+                  {list.tasks.length + " " + list.name}
                 </Button>)
             })}
             <Button style={{ display: (this.state.reveal === "none" ? "block" : "none") }} onClick={() => this.setState({ reveal: "block" })}>
@@ -133,7 +134,7 @@ class ListTasks extends Component {
                   <input type="color" placeholder="color" value={this.state.color} onChange={(e) => this.setState({ color: e.target.value })} />
                 </Cell>
                 <Cell small={6} large={6}>
-                  <XCircleIcon onClick={() => { this.setState({ reveal: "none" }); }} className="btn reveal-icon" />
+                  <XCircleIcon onClick={() => { this.setState({ reveal: "none", nameTaskList: "", color: "#1373aa" }); }} className="btn reveal-icon" />
                 </Cell>
                 <Cell small={6} large={6}>
                   <PlusCircleIcon onClick={this.createTaskList} className="btn reveal-icon" />
@@ -143,10 +144,8 @@ class ListTasks extends Component {
           </Menu>
         </Cell>
         <Cell small={9} large={9} className="tasks-section">
-          <Grid>
-            <Cell className="panel-create-task">
-              <div>
-              </div>
+          <Grid >
+            <Cell className="panel-create-task" style={{ userSelect: "none" }}>
               <Grid>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={4} large={4}>
                   <input type="text" placeholder="name" value={this.state.name} onChange={(e) => this.setState({ name: e.target.value })} />
@@ -159,8 +158,8 @@ class ListTasks extends Component {
                     <PlusCircleIcon className="add-icon" />
                   </Button>
                 </Cell>
-                <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10}>
-                  <Label className="cant-task-column" style={{ userSelect: "none", background: this.state.currentTaskList.bgColor, color: this.state.currentTaskList.textColor }}>
+                <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10} >
+                  <Label className="cant-main-task">
                     {this.state.currentTaskList.tasks.length + " in " + this.state.currentTaskList.name}
                   </Label>
                 </Cell>

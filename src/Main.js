@@ -23,6 +23,7 @@ class Main extends Component {
       columns: this.readJsonArray(relative_path + 'columns.json'),
       taskList: this.readJsonArray(relative_path + 'taskList.json'),
       tasks: this.readJsonArray(relative_path + 'tasks.json'),
+      today: new Date()
     };
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
@@ -149,10 +150,10 @@ class Main extends Component {
           </li>
         </ul>
         <div className='content'>
-          <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} />)} />
+          <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} today={this.state.today} />)} />
           <Route path='/tasks' render={(props) => (<ListTasks {...props} tasks={this.state.tasks} taskList={this.state.taskList} createTask={this.createTask} createTaskList={this.createTaskList} />)} />
           <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd} />)} />
-          <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks} />)} />
+          <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks} today={this.state.today} />)} />
         </div>
       </HashRouter>
     );

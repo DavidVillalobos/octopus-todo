@@ -41,6 +41,7 @@ class Calendar extends Component {
     });
     return weeks;
   }
+
   getDayNames = () => this.getCalendar().dayNames;
   PrevMonth() {
     this.setState({
@@ -64,7 +65,7 @@ class Calendar extends Component {
             PrevMonth={this.PrevMonth}
           />
         </Cell>
-        <Cell small={12} large={12}>
+        <Cell small={12} large={12} className="scroll">
           {this.getWeeks().map((week, index) => (
             <div key={index}>
               <Week days={week} month={this.actual.getMonth()} today={this.today} />
