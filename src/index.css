@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(41, 41, 41) !important;
+  background-color: rgb(40, 40, 40) !important;
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@ ul.header li {
 }
 
 ul.header{
-  background-color: rgb(41, 41, 41);
+  background-color: rgb(40, 40, 40);
   height: 46px;
 }
 
@@ -311,4 +311,11 @@ input[type="color"]:focus, input[type="color"]:active {
 
 .reveal-task-list{
   background-color: rgb(55, 55, 55) !important;
+}
+
+
+.row-main-title{
+  background-color: rgb(60, 60, 60) !important;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px rgb(40, 40, 40) !important;
 }

@@ -28,12 +28,12 @@ class Home extends Component {
     return (
       <div className="home-task">
         <Grid style={{ userSelect: "none" }}>
-          <Cell large={12} className="text-center">
-            <Label style={{ fontSize: 30, background: "transparent" }}>
-              Octopus Todo
+          <Cell className="text-center row-main-title">
+            <Label style={{ fontSize: 35, background: "transparent" }}>
+              Octopus todo
             </Label>
           </Cell>
-          <Cell large={12} style={{ marginBottom: 10 }}>
+          <Cell offsetOnSmall={2} offsetOnLarge={2} large={8} small={8} >
             <Label style={{ fontSize: 20, background: "transparent" }} >
               Main tasks:
               <Badge style={{ fontSize: 25, background: "transparent" }} >
