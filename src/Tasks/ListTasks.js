@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Cell, Menu, Button, Label, Reveal } from 'react-foundation';
-import { PlusCircleIcon, CollectionIcon } from '@heroicons/react/solid'
+import { PlusCircleIcon, CollectionIcon, XCircleIcon, ColorSwatchIcon } from '@heroicons/react/solid'
 import Task from "../Task";
 import { v4 as uuidv4 } from 'uuid'
 
@@ -62,8 +62,8 @@ class ListTasks extends Component {
     }
   }
 
-
   invertColor(hex, bw) {
+    // https://stackoverflow.com/questions/35969656/how-can-i-generate-the-opposite-color-according-to-current-color
     let padZero = (str, len) => {
       len = len || 2;
       var zeros = new Array(len).join('0');
@@ -121,23 +121,22 @@ class ListTasks extends Component {
               <PlusCircleIcon className="navbar-icon" />
               New
             </Button>
-            <Reveal isFullscreen={true} style={{ display: this.state.reveal }}>
+            <Reveal isFullscreen={true} className="reveal-task-list text-center" style={{ display: this.state.reveal }}>
               <Grid>
                 <Cell>
                   <input type="text" placeholder="name" value={this.state.nameTaskList} onChange={(e) => this.setState({ nameTaskList: e.target.value })} />
                 </Cell>
                 <Cell small={6} large={6}>
-                  <Label>
-                    Color:
-                  </Label>
+                  <ColorSwatchIcon className="reveal-icon" />
                 </Cell>
                 <Cell small={6} large={6}>
                   <input type="color" placeholder="color" value={this.state.color} onChange={(e) => this.setState({ color: e.target.value })} />
                 </Cell>
-                <Cell>
-                  <Button onClick={this.createTaskList}>
-                    <PlusCircleIcon className="navbar-icon" />
-                  </Button>
+                <Cell small={6} large={6}>
+                  <XCircleIcon onClick={() => { this.setState({ reveal: "none" }); }} className="btn reveal-icon" />
+                </Cell>
+                <Cell small={6} large={6}>
+                  <PlusCircleIcon onClick={this.createTaskList} className="btn reveal-icon" />
                 </Cell>
               </Grid>
             </Reveal>
@@ -161,7 +160,7 @@ class ListTasks extends Component {
                   </Button>
                 </Cell>
                 <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10}>
-                  <Label className="cant-task-column" style={{ userSelect: "none" }}>
+                  <Label className="cant-task-column" style={{ userSelect: "none", background: this.state.currentTaskList.bgColor, color: this.state.currentTaskList.textColor }}>
                     {this.state.currentTaskList.tasks.length + " in " + this.state.currentTaskList.name}
                   </Label>
                 </Cell>
