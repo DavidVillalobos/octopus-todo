@@ -13,7 +13,8 @@ class DashBoard extends Component {
         >
           {Object.entries(this.props.columns).map(([columnId, column], index) => {
             return (
-              <ColumnDashBoard key={index} columnName={column.name} tasks={column.tasks} columnId={columnId} />
+              <ColumnDashBoard key={index} columnName={column.name} tasks={column.tasks} columnId={columnId}
+                taskList={this.props.taskList} updateTask={this.props.updateTask} removeTask={this.props.removeTask} />
             );
           })}
         </DragDropContext>

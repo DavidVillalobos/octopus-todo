@@ -44,7 +44,8 @@ class Home extends Component {
           <Cell offsetOnSmall={2} offsetOnLarge={2} large={8} small={8}>
             {
               this.state.mainTasks.map(item => {
-                return (<Task key={item.taskId} content={item} />)
+                return (<Task key={item.taskId} content={item} taskList={this.props.taskList}
+                  updateTask={this.props.updateTask} removeTask={this.props.removeTask} />)
               })
             }
           </Cell>

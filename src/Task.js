@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Grid, Cell, Button } from 'react-foundation';
+import { Grid, Cell } from 'react-foundation';
 import {
-  ClockIcon, CheckIcon, ChartSquareBarIcon,
-  ViewListIcon, BellIcon, ColorSwatchIcon
+  ClockIcon, CheckIcon, ChartSquareBarIcon, TrashIcon,
+  ViewListIcon, BellIcon, ColorSwatchIcon, XIcon
 } from '@heroicons/react/solid'
 
 class Task extends Component {
@@ -18,6 +18,7 @@ class Task extends Component {
     };
     this.changeMode = this.changeMode.bind(this)
     this.commitChanges = this.commitChanges.bind(this)
+    this.deleteTask = this.deleteTask.bind(this)
   }
 
   changeMode() {
@@ -40,14 +41,17 @@ class Task extends Component {
       nameState: this.props.content.nameState,
       completed: this.props.content.completed,
       taskList: this.state.taskList,
-      nameTaskList: this.props.content.taskList,
+      nameTaskList: this.state.taskList,
       bgColor: this.state.color,
       textColor: this.invertColor(this.state.color, true),
     };
-    console.log(updateTask);
-    /*if (this.state.name !== '') {
-      this.props.updateTask();
-    }*/
+    console.log('You want to update ' + updateTask.taskId);
+    this.props.updateTask(updateTask);
+    this.changeMode();
+  }
+
+  deleteTask() {
+    console.log('You want to delete ' + this.props.content.taskId);
     this.changeMode();
   }
 
@@ -132,7 +136,15 @@ class Task extends Component {
                 <ViewListIcon className='edit-mode-icon' />
               </Cell>
               <Cell small={6} large={6}>
-                <input type="text" className='editTaskInput' placeholder="name" value={this.state.taskList} onChange={(e) => this.setState({ taskList: e.target.value })} />
+                <select value={this.state.taskList} className='editTaskInput' onChange={(e) => this.setState({ taskList: e.target.value })}>
+                  <option value="1">Tasks </option>
+                  {this.props.taskList.map(list => {
+                    return (
+                      <option key={list.listId} value={list.listId}>
+                        {list.name}
+                      </option>)
+                  })}
+                </select>
               </Cell>
               <Cell small={1} large={1}>
                 <ColorSwatchIcon className="edit-mode-icon" />
@@ -140,15 +152,14 @@ class Task extends Component {
               <Cell small={4} large={4}>
                 <input type="color" className='editTaskInput' placeholder="color" value={this.state.color} style={{ marginTop: -15 }} onChange={(e) => this.setState({ color: e.target.value })} />
               </Cell>
-              <Cell small={6} large={6} className='text-center'>
-                <Button onClick={this.changeMode}>
-                  Remove Task
-                </Button>
+              <Cell small={4} large={4} className='text-center'>
+                <TrashIcon className='btn edit-mode-icon' onClick={this.deleteTask} />
               </Cell>
-              <Cell small={6} large={6} className='text-center'>
-                <Button onClick={this.commitChanges}>
-                  Apply Changes
-                </Button>
+              <Cell small={4} large={4} className='text-center'>
+                <XIcon className='btn edit-mode-icon' onClick={this.changeMode} />
+              </Cell>
+              <Cell small={4} large={4} className='text-center'>
+                <CheckIcon className='btn edit-mode-icon' onClick={this.commitChanges} />
               </Cell>
             </Grid>
           </div>
