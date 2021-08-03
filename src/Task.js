@@ -12,13 +12,13 @@ class Task extends Component {
       task: this.props.content,
       mode: 'view',
       name: this.props.content.name,
-      taskList: this.props.content.nameTaskList,
+      taskList: this.props.content.taskList,
       dueDate: this.props.content.dueDate,
       color: this.props.content.bgColor
     };
     this.changeMode = this.changeMode.bind(this)
     this.commitChanges = this.commitChanges.bind(this)
-    this.deleteTask = this.deleteTask.bind(this)
+    this.removeTask = this.removeTask.bind(this)
   }
 
   changeMode() {
@@ -26,7 +26,7 @@ class Task extends Component {
       'mode': (this.state.mode === 'view') ? 'edit' : 'view',
       'task': this.props.content,
       'name': this.props.content.name,
-      'taskList': this.props.content.nameTaskList,
+      'taskList': this.props.content.taskList,
       'dueDate': this.props.content.dueDate,
       'color': this.props.content.bgColor
     });
@@ -41,17 +41,18 @@ class Task extends Component {
       nameState: this.props.content.nameState,
       completed: this.props.content.completed,
       taskList: this.state.taskList,
-      nameTaskList: this.state.taskList,
+      prevTaskList: this.props.content.taskList,
+      nameTaskList: '',
       bgColor: this.state.color,
       textColor: this.invertColor(this.state.color, true),
     };
-    console.log('You want to update ' + updateTask.taskId);
     this.props.updateTask(updateTask);
     this.changeMode();
   }
 
-  deleteTask() {
+  removeTask() {
     console.log('You want to delete ' + this.props.content.taskId);
+    this.props.removeTask({ taskId: this.props.content.taskId, state: this.props.content.state, taskList: this.props.content.taskList })
     this.changeMode();
   }
 
@@ -140,7 +141,7 @@ class Task extends Component {
                   <option value="1">Tasks </option>
                   {this.props.taskList.map(list => {
                     return (
-                      <option key={list.listId} value={list.listId}>
+                      <option key={list.listId} value={list.listId} >
                         {list.name}
                       </option>)
                   })}
@@ -153,7 +154,7 @@ class Task extends Component {
                 <input type="color" className='editTaskInput' placeholder="color" value={this.state.color} style={{ marginTop: -15 }} onChange={(e) => this.setState({ color: e.target.value })} />
               </Cell>
               <Cell small={4} large={4} className='text-center'>
-                <TrashIcon className='btn edit-mode-icon' onClick={this.deleteTask} />
+                <TrashIcon className='btn edit-mode-icon' onClick={this.removeTask} />
               </Cell>
               <Cell small={4} large={4} className='text-center'>
                 <XIcon className='btn edit-mode-icon' onClick={this.changeMode} />

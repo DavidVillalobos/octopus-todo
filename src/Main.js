@@ -27,6 +27,7 @@ class Main extends Component {
     };
     this.createTask = this.createTask.bind(this)
     this.updateTask = this.updateTask.bind(this)
+    this.removeTask = this.removeTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
     this.onDragEnd = this.onDragEnd.bind(this)
     this.state.tasks.forEach(task => {
@@ -108,23 +109,60 @@ class Main extends Component {
   removeTask(task) {
     let pos = this.state.tasks.findIndex(t => t.taskId === task.taskId);
     if (pos !== -1) {
-      this.state.tasks.splice(pos, 1);
+      let newStateTasks = this.state.tasks;
+      let newStateColumns = this.state.columns;
+      let newStateTasksList = this.state.taskList;
+
+      newStateTasks.splice(pos, 1);
+
+      let posState = newStateColumns[task.state].tasks.findIndex(t => t.taskId === task.taskId);
+      if (posState !== -1) {
+        newStateColumns[task.state].tasks.splice(posState, 1);
+      }
+
+      let posTaskList = newStateTasksList.findIndex(list => list.listId === task.taskList);
+      if (posTaskList !== -1) {
+        let posAux = newStateTasksList[posTaskList].tasks.findIndex(t => t.taskId === task.taskId);
+        newStateTasksList[posTaskList].tasks.splice(posAux, 1);
+      }
+      this.setState({ tasks: newStateTasks, columns: newStateColumns, taskList: newStateTasksList });
       this.commit(relative_path + 'tasks.json', this.state.tasks);
     }
   }
 
   updateTask(task) {
+    if (task.taskList !== '1') { // HOME TASKS
+      task.nameTaskList = this.state.taskList.find(list => list.listId === task.taskList).name;
+    } else {
+      task.nameTaskList = 'Tasks';
+    }
     let pos = this.state.tasks.findIndex(t => t.taskId === task.taskId);
     if (pos !== -1) {
       let newStateTasks = this.state.tasks;
       let newStateColumns = this.state.columns;
+      let newStateTasksList = this.state.taskList;
       newStateTasks[pos] = task;
       let posColumn = newStateColumns[task.state].tasks.findIndex(t => t.taskId === task.taskId);
       if (posColumn !== -1) {
         newStateColumns[task.state].tasks[posColumn] = task;
       }
+
+      let posTasksList = newStateTasksList.findIndex(list => list.listId === task.prevTaskList);
+      if (posTasksList !== -1) {
+        let posAux = newStateTasksList[posTasksList].tasks.findIndex(t => t.taskId === task.taskId);
+        if (posAux !== -1) {
+          newStateTasksList[posTasksList].tasks.splice(pos, 1);
+        }
+        delete task['prevTaskList'];
+      }
+      if (task.listId !== '1') { // HOME TASKS
+        let newPosTasksList = newStateTasksList.findIndex(list => list.listId === task.taskList);
+        if (newPosTasksList !== -1) {
+          newStateTasksList[newPosTasksList].tasks.push(task);
+        }
+      }
       newStateTasks.sort((a, b) => ((a.dueDate > b.dueDate) ? 1 : ((a.dueDate < b.dueDate) ? -1 : 0)));
-      this.setState({ tasks: newStateTasks, columns: newStateColumns });
+      this.setState({ tasks: newStateTasks, columns: newStateColumns, taskList: newStateTasksList });
       this.commit(relative_path + 'tasks.json', this.state.tasks);
     }
   }

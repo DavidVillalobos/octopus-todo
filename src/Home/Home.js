@@ -6,8 +6,10 @@ class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mainTasks: this.props.tasks.filter(task => !task.completed && this.formatDate(this.props.today) <= task.dueDate).slice(0, 5)
+      mainTasks: this.fetchMainTasks()
     };
+    this.commitChanges = this.commitChanges.bind(this)
+    this.commitRemove = this.commitRemove.bind(this)
   }
 
   formatDate(date) {
@@ -22,6 +24,20 @@ class Home extends Component {
       day = '0' + day;
 
     return [year, month, day].join('-');
+  }
+
+  fetchMainTasks() {
+    return this.props.tasks.filter(task => !task.completed && this.formatDate(this.props.today) <= task.dueDate).slice(0, 5);
+  }
+
+  commitChanges(task) {
+    this.props.updateTask(task);
+    this.setState({ mainTasks: this.fetchMainTasks() });
+  }
+
+  commitRemove(task) {
+    this.props.removeTask(task);
+    this.setState({ mainTasks: this.fetchMainTasks() });
   }
 
   render() {
@@ -45,7 +61,7 @@ class Home extends Component {
             {
               this.state.mainTasks.map(item => {
                 return (<Task key={item.taskId} content={item} taskList={this.props.taskList}
-                  updateTask={this.props.updateTask} removeTask={this.props.removeTask} />)
+                  updateTask={this.commitChanges} removeTask={this.commitRemove} />)
               })
             }
           </Cell>
