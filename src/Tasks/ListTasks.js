@@ -91,7 +91,7 @@ class ListTasks extends Component {
 
   changeMode() {
     this.setState({
-      'mode': (this.state.modeList === 'view') ? 'edit' : 'view',
+      'modeList': (this.state.modeList === 'view') ? 'edit' : 'view',
     });
   }
 
@@ -151,9 +151,7 @@ class ListTasks extends Component {
                   <input type="date" placeholder="dueDate" value={this.state.dueDate} onChange={(e) => this.setState({ dueDate: e.target.value })} />
                 </Cell>
                 <Cell small={2} large={2} className="text-center">
-                  <Button className="button-create" onClick={this.createTask}>
-                    <PlusIcon className="add-icon" />
-                  </Button>
+                  <PlusIcon className="btn add-icon" onClick={this.createTask} />
                 </Cell>
                 <Cell small={1} large={1} >
                   {iconCog}

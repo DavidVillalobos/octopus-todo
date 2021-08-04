@@ -60,7 +60,7 @@ ul.header li a:hover{
 }
 
 .add-icon{
-  height: 3em;
+  height: 2.4em;
 }
 
 .cog-icon{
@@ -159,7 +159,7 @@ ul.header li a:hover{
 }
 
 .content-section{
-  height: 490px;
+  height: 450px;
   overflow-y: scroll;
   background-color: rgb(75, 75, 75);
 }
