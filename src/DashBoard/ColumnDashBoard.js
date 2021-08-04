@@ -36,7 +36,8 @@ class ColumnDashBoard extends Component {
                                 ...provided.draggableProps.style
                               }}
                             >
-                              <Task content={task} />
+                              <Task content={task} taskList={this.props.taskList}
+                                updateTask={this.props.updateTask} removeTask={this.props.removeTask} />
                             </div>
                           );
                         }}

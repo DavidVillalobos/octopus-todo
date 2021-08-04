@@ -11,6 +11,7 @@ import Home from './Home/Home';
 import ListTasks from './Tasks/ListTasks';
 import Dashboard from './DashBoard/DashBoard';
 import Calendar from './Calendar/Calendar';
+import { v4 as uuidv4 } from 'uuid'
 
 const fs = window.require('fs');
 
@@ -25,15 +26,26 @@ class Main extends Component {
       tasks: this.readJsonArray(relative_path + 'tasks.json'),
       today: new Date()
     };
-    this.createTask = this.createTask.bind(this)
-    this.createTaskList = this.createTaskList.bind(this)
-    this.onDragEnd = this.onDragEnd.bind(this)
+    if (this.state.columns.length === 0) {
+      this.state.columns.push({
+        "columnId": uuidv4(), "name": "To do",
+        "tasks": [], "finalColumn": true
+      });
+      this.commit(relative_path + 'columns.json', this.state.columns);
+    }
+    this.createTask = this.createTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
+    this.createTaskList = this.createTaskList.bind(this);
+    this.createColumn = this.createColumn.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state.tasks.forEach(task => {
       if (0 <= task.state && task.state < this.state.columns.length) {
         this.state.columns[task.state].tasks.push(task);
       }
       if (task.taskList !== '1') { // HOME TASKS
-        this.state.taskList.find(list => list.listId === task.taskList).tasks.push(task);
+        let taskList = this.state.taskList.find(list => list.listId === task.taskList);
+        if (taskList) taskList.tasks.push(task);
       }
     })
   }
@@ -103,6 +115,85 @@ class Main extends Component {
     this.commit(relative_path + 'tasks.json', this.state.tasks);
   }
 
+  createColumn(column) {
+    let newStateColumns = this.state.columns;
+    if (this.state.columns.length > 0) {
+      newStateColumns[newStateColumns.length - 1].finalColumn = false;
+      // update completed all tasks...
+    }
+    newStateColumns.push(column);
+    this.setState({ columns: newStateColumns });
+    this.commit(relative_path + 'columns.json',
+      this.state.columns.map(column => {
+        return {
+          "columnId": column.columnId, "name": column.name,
+          "tasks": [], "finalColumn": column.finalColumn
+        };
+      })
+    );
+  }
+
+  removeTask(task) {
+    let pos = this.state.tasks.findIndex(t => t.taskId === task.taskId);
+    if (pos !== -1) {
+      let newStateTasks = this.state.tasks;
+      let newStateColumns = this.state.columns;
+      let newStateTasksList = this.state.taskList;
+
+      newStateTasks.splice(pos, 1);
+
+      let posState = newStateColumns[task.state].tasks.findIndex(t => t.taskId === task.taskId);
+      if (posState !== -1) {
+        newStateColumns[task.state].tasks.splice(posState, 1);
+      }
+
+      let posTaskList = newStateTasksList.findIndex(list => list.listId === task.taskList);
+      if (posTaskList !== -1) {
+        let posAux = newStateTasksList[posTaskList].tasks.findIndex(t => t.taskId === task.taskId);
+        newStateTasksList[posTaskList].tasks.splice(posAux, 1);
+      }
+      this.setState({ tasks: newStateTasks, columns: newStateColumns, taskList: newStateTasksList });
+      this.commit(relative_path + 'tasks.json', this.state.tasks);
+    }
+  }
+
+  updateTask(task) {
+    if (task.taskList !== '1') { // HOME TASKS
+      task.nameTaskList = this.state.taskList.find(list => list.listId === task.taskList).name;
+    } else {
+      task.nameTaskList = 'Tasks';
+    }
+    let pos = this.state.tasks.findIndex(t => t.taskId === task.taskId);
+    if (pos !== -1) {
+      let newStateTasks = this.state.tasks;
+      let newStateColumns = this.state.columns;
+      let newStateTasksList = this.state.taskList;
+      newStateTasks[pos] = task;
+      let posColumn = newStateColumns[task.state].tasks.findIndex(t => t.taskId === task.taskId);
+      if (posColumn !== -1) {
+        newStateColumns[task.state].tasks[posColumn] = task;
+      }
+
+      let posTasksList = newStateTasksList.findIndex(list => list.listId === task.prevTaskList);
+      if (posTasksList !== -1) {
+        let posAux = newStateTasksList[posTasksList].tasks.findIndex(t => t.taskId === task.taskId);
+        if (posAux !== -1) {
+          newStateTasksList[posTasksList].tasks.splice(pos, 1);
+        }
+        delete task['prevTaskList'];
+      }
+      if (task.listId !== '1') { // HOME TASKS
+        let newPosTasksList = newStateTasksList.findIndex(list => list.listId === task.taskList);
+        if (newPosTasksList !== -1) {
+          newStateTasksList[newPosTasksList].tasks.push(task);
+        }
+      }
+      newStateTasks.sort((a, b) => ((a.dueDate > b.dueDate) ? 1 : ((a.dueDate < b.dueDate) ? -1 : 0)));
+      this.setState({ tasks: newStateTasks, columns: newStateColumns, taskList: newStateTasksList });
+      this.commit(relative_path + 'tasks.json', this.state.tasks);
+    }
+  }
+
   createTaskList(taskList) {
     this.state.taskList.push(taskList);
     this.commit(relative_path + 'taskList.json',
@@ -150,10 +241,19 @@ class Main extends Component {
           </li>
         </ul>
         <div className='content'>
-          <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} today={this.state.today} />)} />
-          <Route path='/tasks' render={(props) => (<ListTasks {...props} tasks={this.state.tasks} taskList={this.state.taskList} createTask={this.createTask} createTaskList={this.createTaskList} />)} />
-          <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd} />)} />
-          <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks} today={this.state.today} />)} />
+          <Route exact path='/' render={(props) => (<Home {...props} tasks={this.state.tasks} today={this.state.today}
+            taskList={this.state.taskList} updateTask={this.updateTask} removeTask={this.removeTask} />)} />
+
+          <Route path='/tasks' render={(props) => (<ListTasks {...props}
+            tasks={this.state.tasks} taskList={this.state.taskList} createTask={this.createTask}
+            createTaskList={this.createTaskList} updateTask={this.updateTask} removeTask={this.removeTask} />)} />
+
+          <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd}
+            taskList={this.state.taskList} updateTask={this.updateTask} removeTask={this.removeTask} createColumn={this.createColumn} />)} />
+
+          <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks}
+            today={this.state.today} />)} />
+
         </div>
       </HashRouter>
     );

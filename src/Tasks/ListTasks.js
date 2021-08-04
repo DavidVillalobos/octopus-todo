@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Cell, Menu, Button, Label, Reveal } from 'react-foundation';
-import { PlusCircleIcon, CollectionIcon, XCircleIcon, ColorSwatchIcon } from '@heroicons/react/solid'
+import { PlusIcon, CollectionIcon, XIcon, ColorSwatchIcon, CogIcon } from '@heroicons/react/solid'
 import Task from "../Task";
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,23 +14,15 @@ class ListTasks extends Component {
       nameTaskList: "",
       dueDate: "",
       color: "#1373aa",
-      reveal: "none"
+      reveal: "none",
+      modeList: 'view'
     };
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
+    this.changeMode = this.changeMode.bind(this)
   }
 
   getHomeTasks() { return { "listId": "1", "name": "Tasks", "bgColor": "#1373aa", "textColor": "white", "tasks": this.props.tasks } };
-
-
-  /*handleClick(e) {
-    if (e.type === 'click') {
-      console.log('Left click');
-    } else if (e.type === 'contextmenu') {
-      console.log('Right click');
-    }
-  }*/
-
 
   createTask() {
     if (this.state.name !== '') {
@@ -97,10 +89,15 @@ class ListTasks extends Component {
     return "#" + padZero(r) + padZero(g) + padZero(b);
   }
 
-
-
+  changeMode() {
+    this.setState({
+      'modeList': (this.state.modeList === 'view') ? 'edit' : 'view',
+    });
+  }
 
   render() {
+    let iconCog = (this.state.currentTaskList.listId !== "1") ? <CogIcon className="btn cog-icon"
+      onDoubleClick={this.changeMode} onClick={this.changeMode} onContextMenu={this.changeMode} /> : '';
     return (
       <Grid>
         <Cell small={3} large={3} className="lists-section">
@@ -119,7 +116,7 @@ class ListTasks extends Component {
                 </Button>)
             })}
             <Button style={{ display: (this.state.reveal === "none" ? "block" : "none") }} onClick={() => this.setState({ reveal: "block" })}>
-              <PlusCircleIcon className="navbar-icon" />
+              <PlusIcon className="navbar-icon" />
               New
             </Button>
             <Reveal isFullscreen={true} className="reveal-task-list text-center" style={{ display: this.state.reveal }}>
@@ -134,10 +131,10 @@ class ListTasks extends Component {
                   <input type="color" placeholder="color" value={this.state.color} onChange={(e) => this.setState({ color: e.target.value })} />
                 </Cell>
                 <Cell small={6} large={6}>
-                  <XCircleIcon onClick={() => { this.setState({ reveal: "none", nameTaskList: "", color: "#1373aa" }); }} className="btn reveal-icon" />
+                  <XIcon onClick={() => { this.setState({ reveal: "none", nameTaskList: "", color: "#1373aa" }); }} className="btn reveal-icon" />
                 </Cell>
                 <Cell small={6} large={6}>
-                  <PlusCircleIcon onClick={this.createTaskList} className="btn reveal-icon" />
+                  <PlusIcon onClick={this.createTaskList} className="btn reveal-icon" />
                 </Cell>
               </Grid>
             </Reveal>
@@ -154,11 +151,12 @@ class ListTasks extends Component {
                   <input type="date" placeholder="dueDate" value={this.state.dueDate} onChange={(e) => this.setState({ dueDate: e.target.value })} />
                 </Cell>
                 <Cell small={2} large={2} className="text-center">
-                  <Button className="button-create" onClick={this.createTask}>
-                    <PlusCircleIcon className="add-icon" />
-                  </Button>
+                  <PlusIcon className="btn add-icon" onClick={this.createTask} />
                 </Cell>
-                <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10} >
+                <Cell small={1} large={1} >
+                  {iconCog}
+                </Cell>
+                <Cell small={11} large={11} >
                   <Label className="cant-main-task">
                     {this.state.currentTaskList.tasks.length + " in " + this.state.currentTaskList.name}
                   </Label>
@@ -170,7 +168,7 @@ class ListTasks extends Component {
                 {this.state.currentTaskList.tasks.map((task) => {
                   return (
                     <Cell key={task.taskId} offsetOnLarge={1} offsetOnSmall={1} small={10} large={10}>
-                      <Task content={task} />
+                      <Task content={task} taskList={this.props.taskList} updateTask={this.props.updateTask} removeTask={this.props.removeTask} />
                     </Cell>
                   )
                 })}
