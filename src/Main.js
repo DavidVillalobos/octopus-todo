@@ -11,6 +11,7 @@ import Home from './Home/Home';
 import ListTasks from './Tasks/ListTasks';
 import Dashboard from './DashBoard/DashBoard';
 import Calendar from './Calendar/Calendar';
+import { v4 as uuidv4 } from 'uuid'
 
 const fs = window.require('fs');
 
@@ -25,11 +26,19 @@ class Main extends Component {
       tasks: this.readJsonArray(relative_path + 'tasks.json'),
       today: new Date()
     };
-    this.createTask = this.createTask.bind(this)
-    this.updateTask = this.updateTask.bind(this)
-    this.removeTask = this.removeTask.bind(this)
-    this.createTaskList = this.createTaskList.bind(this)
-    this.onDragEnd = this.onDragEnd.bind(this)
+    if (this.state.columns.length === 0) {
+      this.state.columns.push({
+        "columnId": uuidv4(), "name": "To do",
+        "tasks": [], "finalColumn": true
+      });
+      this.commit(relative_path + 'columns.json', this.state.columns);
+    }
+    this.createTask = this.createTask.bind(this);
+    this.updateTask = this.updateTask.bind(this);
+    this.removeTask = this.removeTask.bind(this);
+    this.createTaskList = this.createTaskList.bind(this);
+    this.createColumn = this.createColumn.bind(this);
+    this.onDragEnd = this.onDragEnd.bind(this);
     this.state.tasks.forEach(task => {
       if (0 <= task.state && task.state < this.state.columns.length) {
         this.state.columns[task.state].tasks.push(task);
@@ -104,6 +113,24 @@ class Main extends Component {
     }
     this.state.tasks.sort((a, b) => ((a.dueDate > b.dueDate) ? 1 : ((a.dueDate < b.dueDate) ? -1 : 0)));
     this.commit(relative_path + 'tasks.json', this.state.tasks);
+  }
+
+  createColumn(column) {
+    let newStateColumns = this.state.columns;
+    if (this.state.columns.length > 0) {
+      newStateColumns[newStateColumns.length - 1].finalColumn = false;
+      // update completed all tasks...
+    }
+    newStateColumns.push(column);
+    this.setState({ columns: newStateColumns });
+    this.commit(relative_path + 'columns.json',
+      this.state.columns.map(column => {
+        return {
+          "columnId": column.columnId, "name": column.name,
+          "tasks": [], "finalColumn": column.finalColumn
+        };
+      })
+    );
   }
 
   removeTask(task) {
@@ -222,7 +249,7 @@ class Main extends Component {
             createTaskList={this.createTaskList} updateTask={this.updateTask} removeTask={this.removeTask} />)} />
 
           <Route path='/dashboard' render={(props) => (<Dashboard {...props} columns={this.state.columns} onDragEnd={this.onDragEnd}
-            taskList={this.state.taskList} updateTask={this.updateTask} removeTask={this.removeTask} />)} />
+            taskList={this.state.taskList} updateTask={this.updateTask} removeTask={this.removeTask} createColumn={this.createColumn} />)} />
 
           <Route path='/calendar' render={(props) => (<Calendar {...props} tasks={this.state.tasks}
             today={this.state.today} />)} />
