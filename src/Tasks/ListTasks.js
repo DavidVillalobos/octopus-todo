@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Grid, Cell, Menu, Button, Label, Reveal } from 'react-foundation';
-import { PlusIcon, CollectionIcon, XIcon, ColorSwatchIcon } from '@heroicons/react/solid'
+import { PlusIcon, CollectionIcon, XIcon, ColorSwatchIcon, CogIcon } from '@heroicons/react/solid'
 import Task from "../Task";
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,23 +14,15 @@ class ListTasks extends Component {
       nameTaskList: "",
       dueDate: "",
       color: "#1373aa",
-      reveal: "none"
+      reveal: "none",
+      modeList: 'view'
     };
     this.createTask = this.createTask.bind(this)
     this.createTaskList = this.createTaskList.bind(this)
+    this.changeMode = this.changeMode.bind(this)
   }
 
   getHomeTasks() { return { "listId": "1", "name": "Tasks", "bgColor": "#1373aa", "textColor": "white", "tasks": this.props.tasks } };
-
-
-  /*handleClick(e) {
-    if (e.type === 'click') {
-      console.log('Left click');
-    } else if (e.type === 'contextmenu') {
-      console.log('Right click');
-    }
-  }*/
-
 
   createTask() {
     if (this.state.name !== '') {
@@ -97,7 +89,15 @@ class ListTasks extends Component {
     return "#" + padZero(r) + padZero(g) + padZero(b);
   }
 
+  changeMode() {
+    this.setState({
+      'mode': (this.state.modeList === 'view') ? 'edit' : 'view',
+    });
+  }
+
   render() {
+    let iconCog = (this.state.currentTaskList.listId !== "1") ? <CogIcon className="btn cog-icon"
+      onDoubleClick={this.changeMode} onClick={this.changeMode} onContextMenu={this.changeMode} /> : '';
     return (
       <Grid>
         <Cell small={3} large={3} className="lists-section">
@@ -155,7 +155,10 @@ class ListTasks extends Component {
                     <PlusIcon className="add-icon" />
                   </Button>
                 </Cell>
-                <Cell offsetOnSmall={1} offsetOnLarge={1} small={10} large={10} >
+                <Cell small={1} large={1} >
+                  {iconCog}
+                </Cell>
+                <Cell small={11} large={11} >
                   <Label className="cant-main-task">
                     {this.state.currentTaskList.tasks.length + " in " + this.state.currentTaskList.name}
                   </Label>
